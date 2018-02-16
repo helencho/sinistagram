@@ -1,0 +1,123 @@
+/*--------------------------------------------*/
+/*                  Home.jsx                  */
+/*--------------------------------------------*/
+
+.homefeed-page-container {
+    background-color: rgb(250,250,250);
+    font-size: 10px;
+    color: rgb(55, 55, 55);
+    padding-bottom: 3%;
+    /* margin-top: 3%; */
+}
+
+
+.homefeed-page-container p {
+    padding: 0;
+    margin: 0;
+}
+
+.homefeed-card-container {
+    background-color: rgb(255, 255, 255);
+    width: 59%;
+    margin: 5% auto;
+    transition: 0.5s all;
+    text-align: left;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 0.5%;
+}
+
+.homefeed-card-meta {
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    padding: 2%;
+    align-items: center;
+}
+
+.homefeed-card-meta p {
+    margin-left: 2%;
+}
+
+.homefeed-card-userprof {
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+}
+
+.homefeed-card-username a {
+    text-decoration: none;
+    font-size: 1.4em;
+    color: rgb(55, 55, 55);
+    font-weight: 600;
+}
+
+.homefeed-card-img {
+    background-color: rgb(255, 255, 255);
+}
+
+.homefeed-card-img img {
+    position: relative;
+    width: 100%;
+}
+
+.homefeed-card-heart,
+.homefeed-card-likes,
+.homefeed-card-caption {
+    font-size: 1.4em;
+    padding: 2%;
+}
+
+.homefeed-card-heart {
+    font-size: 2em;
+}
+
+
+.homefeed-card-liked-button:focus,
+.homefeed-card-unliked-button:focus {
+    outline: none;
+}
+
+.homefeed-card-liked-button,
+.homefeed-card-unliked-button {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.homefeed-card-liked-button {
+    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background-size: 30px 30px;
+}
+
+.homefeed-card-unliked-button {
+    background: url('https://i.imgur.com/ACdwplH.png') no-repeat;
+    background-size: 30px 30px;
+}
+
+.homefeed-card-unliked-button:hover {
+    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background-size: 30px 30px;
+}
+
+.homefeed-card-likes {
+    font-weight: 600;
+}
+
+.homefeed-caption-username {
+    font-weight: 600;
+}
+
+/* .homefeed-card-caption {
+    background-color: rgb(255, 255, 255);
+} */
+
+@media screen and (max-width: 940px) {
+    .homefeed-card-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .homefeed-card-container {
+        width: 95%;
+    }
+}

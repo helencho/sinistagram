@@ -1,0 +1,590 @@
+.App {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+
+/* .appHeader {
+  background-color:white;
+  border: 1px solid grey;
+  margin: 0;
+  padding: 15px 0px;
+  color: black;
+  text-shadow: black 2px 2px
+} */
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/*--------------------------------------------*/
+/*               App.js topbar                */
+/*--------------------------------------------*/
+
+.topbar {
+  background-color: #ffff;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: 6em;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topbar a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.topbar .fa-2x {
+  padding: 0 3%;
+}
+
+.topbar-left {
+  /* background-color: salmon; */
+  width: 30%;
+}
+
+.topbar-sitename {
+  font-size: 2.2em;
+}
+
+.topbar-middle {
+  /* background-color: goldenrod; */
+  width: 30%;
+}
+
+.topbar-middle form {
+  padding: 0;
+  margin: 0;
+}
+
+.topbar-right {
+  /* background-color: yellowgreen; */
+  width: 30%;
+}
+
+.fontColor{
+  color: #003569;
+}
+
+.userPhotos {
+  height: 293px;
+  width: 293px;
+}
+
+.instaCloneFont {
+font-family: 'Grand Hotel', cursive;
+}
+
+.usernameFont {
+font-family: 'Quicksand', sans-serif;
+}
+
+/* .cameraIcon {
+  padding-left: 15%;
+  top: 1.5em;
+  width: 2em;
+  height: 1.5em;
+  color: black;
+  position: fixed;
+} */
+
+/* .site{
+  position: fixed;
+  padding-left: 2em;
+  top: 0;
+} */
+
+/* .iconDistance{
+  padding-left: 2em;
+} */
+
+/* .iconTop{
+  padding-top: 1.5em;
+  padding-left: 80%;
+  position: fixed;
+} */
+
+.cursor {
+  cursor: pointer;
+}
+
+.searchBar {
+  padding: 3%;
+  text-align: center;
+  background-color: rgb(250,250,250);
+  border: none;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 0.5%;
+  transition: 0.3s all;
+  font-size: 1.4em;
+}
+
+.searchBar::placeholder {
+  color: rgb(221, 221, 221);
+}
+
+.searchBar:focus {
+  outline: none;
+  background-color: rgb(255, 255, 255);
+}
+
+
+/*--------------------------------------------*/
+/*         Login/Register Page and Box        */
+/*--------------------------------------------*/
+.login-user-container,
+.register-user-container {
+  /* background-color: salmon; */
+  margin-top: 100px;
+  /* height: 100%; */
+}
+
+.loginBox,
+.registerBox {
+  text-align: center;
+  /* width: 22.25%; */
+  width: 300px;
+  height: 45%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  /* margin-left: 38.4%; */
+  /* margin-top: 5%; */
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.siteFont{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Grand Hotel', cursive;
+  color: #262626;
+}
+
+.loginBtn{
+  top: 16px;
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: white;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  background-color: #3897f0;
+  font-weight: bold;
+}
+
+.login-user-container form input[type='text'],
+.login-user-container form input[type='password'],
+.register-user-container form input[type='text'],
+.register-user-container form input[type='email'],
+.register-user-container form input[type='password'] {
+  background-color: rgb(250, 250, 250);
+  outline: none;
+  height: 38px;
+  width: 80%;
+  padding: 3%;
+  border: none;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  box-sizing: border-box;
+  flex-direction: row;
+  position: relative;
+  color: #262626;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.login-user-container form input[type='text']::placeholder,
+.login-user-container form input[type='password']::placeholder,
+.register-user-container form input[type='text']::placeholder,
+.register-user-container form input[type='email']::placeholder,
+.register-user-container form input[type='password']::placeholder {
+  color: rgb(200, 200, 200);
+}
+
+.login-user-container form input[type='text']:focus,
+.login-user-container form input[type='password']:focus,
+.register-user-container form input[type='text']:focus,
+.register-user-container form input[type='email']:focus,
+.register-user-container form input[type='password']:focus {
+  outline: 1px solid #b8b8b8;
+}
+
+/* .usernameBox{
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  border: 1px solid #efefef;
+}
+
+.passwordBox{
+  top: 8px;
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  border: 1px solid #efefef;
+} */
+
+.messageSize{
+  font-size: 12px;
+  color: #262626;
+  text-align: center;
+}
+
+.smallerBox {
+  text-align: center;
+  /* width: 22.25%; */
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  /* border-radius: 1px; */
+  /* margin-left: 38.4%; */
+  top: 10px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.dontHaveAcct{
+  font-size: 14px;
+  color: #262626;
+}
+
+.getAppBox { 
+  /* width: 270px; */
+  text-align: center;
+  background-color: #fff;
+  width: 300px;
+  /* height: 130px; */
+  margin: 0 auto;
+  margin-top: 22px;
+  padding-bottom: 3%;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+}
+
+.getTheApp{
+  font-size: 14px;
+  color: #262626;
+  padding-top: 1.5%;
+}
+
+.appStore-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.c4q-container {
+  padding-top: 3%;
+}
+
+/* .appStore{
+  padding-right: .5%;
+} */
+
+/* NewUserMain page */
+/* .registerBox{
+  text-align: center;
+  width: 22.25%;
+  height: 45%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  margin-left: 38.4%;
+  margin-top: 5%;
+  padding: 10px 0;
+} */
+
+/* .inputBoxes {
+  height: 38px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #262626;
+  flex-direction: row;
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  border: 1px solid #efefef;
+} */
+
+/* .topSpacing1{
+  top: 8px;
+}
+
+.topSpacing2{
+  top: 16px;
+}
+
+.topSpacing3{
+  top: 24px;
+}
+
+.topSpacing4{
+  top: 32px;
+} */
+
+.messageColor{
+  color: #999;
+}
+
+.haveAnAcct{
+  font-size: 14px;
+  color: #262626;
+}
+
+.noUnderline{
+  text-decoration: none;
+}
+
+/*****PROFILE PAGE********/
+
+/* .infoContainer{
+  display: flex;
+justify-content: center;
+
+} */
+.userIMG{
+  display: flex;
+  justify-content: flex-start;
+width: 130px;
+height: 130px;
+border-radius: 5em;
+}
+.userImageContainer, .containerForBtn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: space-between;
+}
+
+.userIMG{
+  border-radius: 50%;
+}
+
+/****************user info*/
+.newInfoForm{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: solid 2px black;
+}
+.formInput{
+  display: flex;
+  color: blue;
+  justify-content: center;
+
+}
+.mainContainer{
+  display: flex;
+  justify-content: center;
+  font-size: 2.5em;
+}
+
+/******************user edit******************/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+  background-size: cover;
+  height:100%;
+}
+
+#feedback-page{
+	text-align:center;
+}
+
+#form-main{
+	width:100%;
+	float:left;
+	padding-top:0px;
+}
+
+#form-div {
+	background-color:rgba(72,72,72,0.4);
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	width: 450px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 54px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#name:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 8px 5px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#email{
+	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+#username{
+	background-image: url(https://www.iconfinder.com/icons/392531/account_friend_human_man_member_person_profile_user_users_icon#size=128);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#email:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-size: 30px 30px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#comment{
+	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+editInput:hover, textarea:hover,
+editInput:focus, textarea:focus {
+	background-color:white;
+}
+
+#button-blue{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+	background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
+	
+.submit-BTN:hover {
+	color: #3498db;
+}
+	
+.ease {
+	width: 0px;
+	height: 74px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+.submit-BTN:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}

@@ -1,0 +1,110 @@
+/*--------------------------------------------*/
+/*                   Fonts                    */
+/*--------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500');
+
+
+body {
+    background-color: rgb(250, 250, 250);
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+/*--------------------------------------------*/
+/*              SinglePhoto.jsx               */
+/*--------------------------------------------*/
+
+.single-photo-container {
+    display: flex;
+    width: 932px;
+    height: 600px;
+    border: 1.3px solid rgb(230, 230, 230);
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 3%;
+    font-size: 1.4em;
+    color: rgb(55, 55, 55);
+}
+
+.single-photo {
+    width: 70%;
+}
+
+.single-photo-img {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.single-photo-details {
+    width: 335px;
+    background-color: white;
+    padding: 3%;
+    text-align: left;
+}
+
+.author-name {
+    font-weight: 600;
+    margin-right: 3%;
+}
+
+.single-photo-author {
+    border-bottom: 1px solid rgb(230, 230, 230);
+    padding-bottom: 6%;
+    display: flex;
+    align-items: center;
+}
+
+.prof-img-small {
+    height: 36px;
+    width: 36px;
+    border-radius: 100%;
+    margin-right: 6%;
+}
+
+.single-photo-caption {
+    padding-top: 6%;
+    height: 60%;
+    line-height: 1.2rem;
+}
+
+.single-photo-liked-status {
+    border-top: 1px solid rgb(230, 230, 230);
+    padding-top: 6%;
+}
+
+.single-photo-likes {
+    padding: 6% 0;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+form {
+    padding: 6% 0;
+}
+
+input[type='text'] {
+    border: none;
+    font-size: 1.2em;
+    color: rgb(55, 55, 55);
+}
+
+input[type='text']::placeholder {
+    /* font-size: 1.2em; */
+    color: rgb(140, 140, 140);
+}
+
+input[type='text']:focus {
+    outline: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .single-photo-container {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    /* make it look mobile */
+}
