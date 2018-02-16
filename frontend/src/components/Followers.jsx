@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Followers.css";
-import Profile from "./profile";
+import "../stylesheets/followers.css";
+import Profile from "./Profile";
 
 class Followers extends Component {
 

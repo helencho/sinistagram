@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
-import './profile.css'
+import '../stylesheets/profile.css'
 import axios from "axios";
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
-import Profile from './profile'
+import Profile from './Profile'
 import Followers from './Followers'
 import Following from './Following'
 import SinglePhoto from './SinglePhoto'

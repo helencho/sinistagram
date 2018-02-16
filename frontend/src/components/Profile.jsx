@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Link, Switch } from "react-router-dom"
-import '../App.css'
+import '../stylesheets/app.css'
 import axios from "axios";
-import ProfileImages from './profileImages';
+import ProfileImages from './ProfileImages';
 import UserInfo from './UserInfo';
 import SinglePhoto from './SinglePhoto';
 

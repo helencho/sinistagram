@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Profile from "./profile";
-import "../Following.css";
+import Profile from "./Profile";
+import "../stylesheets/following.css";
 
 class Following extends Component {
   constructor(props) {

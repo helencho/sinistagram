@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "../stylesheets/app.css";
 
 class NewUserMain extends Component {
   constructor() {

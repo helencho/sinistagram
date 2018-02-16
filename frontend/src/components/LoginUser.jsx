@@ -3,8 +3,8 @@ import axios from "axios";
 import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 
-import Profile from "../LoggedInUser/profile";
-import "../App.css";
+import Profile from "./Profile";
+import "../stylesheets/app.css";
 
 class LoginUser extends React.Component {
   state = {

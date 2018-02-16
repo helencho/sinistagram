@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link, Switch, Redirect } from "react-router-dom"
-import './profile.css';
+import '../stylesheets/profile.css';
 import axios from 'axios'
 import Followers from './Followers'
 import Following from './Following'

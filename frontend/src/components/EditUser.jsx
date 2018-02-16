@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
-import '../App.css';
+import '../stylesheets/app.css';
 
 class EditUser extends React.Component {
     constructor(props) {
