@@ -113,21 +113,32 @@ class Home extends Component {
 
 
     favePhoto = e => {
-        const { loggedInAs } = this.state
+        const { loggedInAs, photoFeed } = this.state
         let user_id = loggedInAs.user_id
         let photo_id = e.target.name
-        console.log(photo_id)
+        console.log('target id: ' + photo_id)
 
+        let newPhotoFeed = [...photoFeed]
+        newPhotoFeed.map(photo => {
+            if (photo.photo_id.toString() === photo_id) {
+                photo.liked = true
+            }
+        })
+        
         axios
             .post(`/users/p/${photo_id}/fave`, {
                 user_id: user_id,
                 photo_id: photo_id
             })
             .then(res => {
-                // console.log(res.data)
-                this.getPhotosFromFollowees() // this adds to the photo feed. Simply toggle liked to true or false 
+                console.log(res.data)
+                this.setState({
+                    photoFeed: newPhotoFeed
+                })
+                // this.getPhotosFromFollowees() // this adds to the photo feed. Simply toggle liked to true or false 
+                // this.doesUserLikePhoto(photo_id)
             })
-            .then(err => {
+            .catch(err => {
                 console.log(err)
             })
     }
