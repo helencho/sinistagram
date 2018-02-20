@@ -8,7 +8,7 @@ class Home extends Component {
         super(props)
         this.state = {
             loggedInAs: '',
-            followings: [],
+            followees: [],
             photoFeed: []
         }
     }
@@ -31,19 +31,20 @@ class Home extends Component {
     getFolloweeUsers = () => {
         const { loggedInAs } = this.state
 
+        // If user is logged in, get all following users under user's id 
         if (loggedInAs) {
             axios
                 .get(`/users/u/${loggedInAs.user_id}/following`)
                 .then(res => {
-                    let followings = res.data.data
-
-                    // Set state in followings array 
+                    let followees = res.data.data
+                    // Set state in followees array 
                     this.setState({
-                        followings: followings
-                    }, () => {
-                        // Then get photos that these users have 'posted'
-                        this.getPhotosFromFollowees()
+                        followees: followees
                     })
+                })
+                // Get photos from the followee users 
+                .then(() => {
+                    this.getPhotosFromFollowees()
                 })
                 .catch(err => {
                     console.log(err)
@@ -53,13 +54,13 @@ class Home extends Component {
 
     // Grab all photos posted by these users 
     getPhotosFromFollowees = () => {
-        const { loggedInAs, followings } = this.state
+        const { loggedInAs, followees } = this.state
 
         // If user follows people 
-        if (followings.length > 0) {
+        if (followees.length > 0) {
 
             // Map through each following user 
-            followings.map(user => {
+            followees.map(user => {
 
                 // Get photos and total likes by current user 
                 axios
@@ -68,12 +69,7 @@ class Home extends Component {
                         let photos = res.data.data
                         photos.map(photo => {
                             // See if user likes the photo or not 
-                            this.doesUserLikePhoto(photo, photo.photo_id)
-
-                            // // Add to photo feed state 
-                            // this.setState({
-                            //     photoFeed: [...this.state.photoFeed, photo]
-                            // })
+                            this.doesUserLikePhoto(photo.photo_id, photo)
                         })
                     })
                     .catch(err => {
@@ -84,8 +80,9 @@ class Home extends Component {
         }
     }
 
-    // See if logged in user likes the photo and add true/false 
-    doesUserLikePhoto = (photo, photo_id) => {
+    // See if logged in user likes the photo, add true/false to state 
+    doesUserLikePhoto = (photo_id, photo) => {
+        let newPhotoFeed = [...this.state.photoFeed]
         let id = photo_id
         let userid = this.state.loggedInAs.user_id
 
@@ -93,17 +90,55 @@ class Home extends Component {
             .get(`/users/p/${id}/likedby/${userid}`)
             .then(res => {
                 let userFound = res.data.data
+                let photoFound = newPhotoFeed.find(photo => photo.photo_id === id)
+
+                // If current user doesn't like photo 
                 if (userFound.length === 0) {
-                    photo.liked = false
-                    this.setState({
-                        photoFeed: [...this.state.photoFeed, photo]
-                    })
-                } else if (userFound.length > 0) {
-                    photo.liked = true
-                    this.setState({
-                        photoFeed: [...this.state.photoFeed, photo]
-                    })
+                    // If photo is found in the feed 
+                    if (photoFound) {
+                        // Set liked to false, add to feed 
+                        newPhotoFeed.map(photo => {
+                            if (photo.photo_id === id) {
+                                photo.liked = false
+                            }
+                        })
+                        this.setState({
+                            photoFeed: newPhotoFeed
+                        })
+                    }
+                    // If no matching photo is found
+                    else if (!photoFound) {
+                        // Set liked to false, add to feed 
+                        photo.liked = false
+                        this.setState({
+                            photoFeed: [...this.state.photoFeed, photo]
+                        })
+                    }
                 }
+                // If current user does like photo 
+                else if (userFound.length > 0) {
+                    // If photo is found in the feed 
+                    if (photoFound) {
+                        // Set liked to true, add to feed 
+                        newPhotoFeed.map(photo => {
+                            if (photo.photo_id === id) {
+                                photo.liked = true
+                            }
+                        })
+                        this.setState({
+                            photoFeed: newPhotoFeed
+                        })
+                    }
+                    // If no matching photo is found
+                    else if (!photoFound) {
+                        // Set liked to true, add to feed 
+                        photo.liked = true
+                        this.setState({
+                            photoFeed: [...this.state.photoFeed, photo]
+                        })
+                    }
+                }
+
             })
             .catch(err => {
                 console.log(err)
@@ -112,18 +147,21 @@ class Home extends Component {
 
 
     favePhoto = e => {
-        const { loggedInAs, photoFeed } = this.state
-        let user_id = loggedInAs.user_id
+        let user_id = this.state.loggedInAs.user_id
         let photo_id = e.target.name
+        let newPhotoFeed = [...this.state.photoFeed]
+
         console.log('target id: ' + photo_id)
 
-        let newPhotoFeed = [...photoFeed]
+        // Find photo in the feed, set liked to true, add 1 to total likes 
         newPhotoFeed.map(photo => {
             if (photo.photo_id.toString() === photo_id) {
                 photo.liked = true
+                photo.total_likes = parseInt(photo.total_likes) + 1
             }
         })
 
+        // Add faved photo and user to database 
         axios
             .post(`/users/p/${photo_id}/fave`, {
                 user_id: user_id,
@@ -134,8 +172,6 @@ class Home extends Component {
                 this.setState({
                     photoFeed: newPhotoFeed
                 })
-                // this.getPhotosFromFollowees() // this adds to the photo feed. Simply toggle liked to true or false 
-                // this.doesUserLikePhoto(photo_id)
             })
             .catch(err => {
                 console.log(err)
@@ -150,7 +186,7 @@ class Home extends Component {
     }
 
     render() {
-        const { loggedInAs, followings, photoFeed } = this.state
+        const { loggedInAs, followees, photoFeed } = this.state
         console.log(this.state)
 
         return (
