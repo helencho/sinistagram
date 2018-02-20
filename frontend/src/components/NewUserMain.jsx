@@ -1,191 +1,159 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "../stylesheets/login.css";
+import React, { Component } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import '../stylesheets/login.css'
 
 class NewUserMain extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      email: "",
-      fullname: "",
-      username: "",
-      password: "",
-      userAvailable: "",
-      message: "By signing up, you agree to our Terms and Privacy Policy",
+      email: '',
+      fullname: '',
+      username: '',
+      password: '',
+      profilepic: '',
+      userAvailable: '',
+      message: 'By signing up, you agree to give us your firstborn.',
       validEmail: false
-    };
+    }
   }
 
   // Track username and password input inside state
   handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   // When user submits form
   handleFormSubmit = e => {
-    e.preventDefault();
-    const { email, username, password, fullname } = this.state;
-    if (email) {
-      axios.get("/users").then(response => {
-        console.log("RESPONSE FOR GET REQUEST", response.data.data);
-        console.log(email);
+    e.preventDefault()
+    const { email, username, password, fullname, profilepic } = this.state
 
-        if (!response.data.data.find(n => n.email_add === email)) {
-          this.setState({
-            validEmail: true
-          });
-        } else {
-          this.setState({
-            validEmail: false,
-            message: "email already in use"
-          });
-        }
-      });
-    }
-    if (username && password) {
-      if (password.length < 6) {
-        return this.setState({
-          message: "Password must be at least 6 characters"
-        });
+    // if (email) {
+    //   axios
+    //     .get('/users')
+    //     .then(res => {
+    //       console.log(res.data)
+    //       if (!res.data.data.find(n => n.email_add === email)) {
+    //         this.setState({
+    //           validEmail: true
+    //         })
+    //       } else {
+    //         this.setState({
+    //           validEmail: false,
+    //           message: 'Email already in use'
+    //         })
+    //       }
+    //     })
+    //     .catch(err => console.log(err))
+    // }
+    if (email && fullname && username && password) {
+      if (username.length < 3) {
+        this.setState({
+          message: 'Username length must be at least 3'
+        })
       }
-      axios.get("/users").then(response => {
-        console.log("RESPONSE FOR GET REQUEST", response.data.data);
-        if (!response.data.data.find(n => n.username === username)) {
-          axios
-            .post("/users/new", {
-              email: email,
-              fullname: fullname,
-              username: username,
-              password: password
-            })
-            .then(res => {
-              console.log(res);
+      if (password.length < 6) {
+        this.setState({
+          message: 'Password must be at least 6 characters'
+        })
+      } else {
+        axios
+          .get('/users')
+          .then(res => {
+            console.log(res.data)
+            if (!res.data.data.find(n => n.username === username)) {
+              axios
+                .post('/users/new', {
+                  username: username,
+                  password: password,
+                  email: email,
+                  fullname: fullname,
+                  profilepic: profilepic
+                })
+                .then(res => {
+                  console.log(res)
+                  this.setState({
+                    email: '',
+                    fullname: '',
+                    username: '',
+                    password: '',
+                    message: 'Registered successfully'
+                  })
+                })
+                .catch(err => {
+                  console.log(err)
+                  this.setState({
+                    email: '',
+                    fullname: '',
+                    username: '',
+                    password: '',
+                    message: 'Error registering'
+                  })
+                })
+            } else {
               this.setState({
-                email: "",
-                fullname: "",
-                username: "",
-                password: "",
-                message: "Registered user"
-                
-              });
-            })
-            .catch(err => {
-              console.log(err);
-              this.setState({
-                email: "",
-                fullname: "",
-                username: "",
-                password: "",
-                message: "Error registering user"
-              });
-            });
-        } else {
-          this.setState({
-            message: "Username  already exists"
-          });
-        }
-      });
+                message: 'Username already exists'
+              })
+            }
+          })
+          .catch(err => console.log(err))
+      }
     } else {
       this.setState({
-        message: "Please fill all forms"
-      });
+        message: 'Please fill all forms'
+      })
     }
-  };
+  }
 
   render() {
-    const { email, username, password, message, fullname } = this.state;
-    console.log(this.state);
+    const { email, username, password, message, fullname } = this.state
+    console.log(this.state)
 
     return (
-      <div className="register-user-container">
-        <div className="registerBox">
-          <h1 className="siteFont">Parallelogram</h1>
+      <div className='register-user-container'>
+        <div className='register-box'>
+          <h1 className='sitefont'>Parallelogram</h1>
+
           <form onSubmit={this.handleFormSubmit}>
             <input
-              className="inputBoxes"
-              type="email"
-              placeholder="Email"
-              name="email"
+              type='email'
+              placeholder='Email'
+              name='email'
               onChange={this.handleInput}
-              value={email}
-            />
-            <br />
+              value={email} />
             <input
-              className="inputBoxes"
-              type="text"
-              placeholder="Full Name"
-              name="fullname"
+              type='text'
+              placeholder='Full Name'
+              name='fullname'
               onChange={this.handleInput}
-              value={fullname}
-            />
-            <br />
+              value={fullname} />
             <input
-              className="inputBoxes"
-              type="text"
-              placeholder="Username"
-              name="username"
+              type='text'
+              placeholder='Username'
+              name='username'
               onChange={this.handleInput}
-              value={username}
-            />
-            <br />
+              value={username} />
             <input
-              className="inputBoxes"
-              type="password"
-              placeholder="Password"
-              name="password"
+              type='password'
+              placeholder='Password'
+              name='password'
               onChange={this.handleInput}
-              value={password}
-            />
-            <br />
+              value={password} />
             <input
-              className="loginBtn"
-              type="submit"
-              value="Sign up"
-            />
+              type='submit'
+              value='Sign up' />
           </form>
-          <br />
-          <p className="messageSize messageColor">{message}</p>
-        </div> {/* End registerBox */}
+          <p className='register-message'>{message}</p>
+        </div> {/* End register-box */}
 
-        <div className="smallerBox">
-          <p className="haveAnAcct">
-            Have an account? <Link to="/users/login" className="noUnderline">Login</Link>
-          </p>
-        </div> {/* End smallerBox */}
-
-        <div className="getAppBox">
-          <p className="getTheApp">Get the app.</p>
-          <div>
-            <img
-              className="appStore"
-              src="https://i.imgur.com/UAP0XMk.png"
-              alt="available on the app store"
-              width="136"
-              height="40"
-            />
-            <img
-              src="https://i.imgur.com/1dnbtWG.png"
-              alt="available on google play"
-              width="136"
-              height="40"
-            />
-          </div>
-          <div>
-            <img
-              src="https://i.imgur.com/EVU0sxy.png"
-              alt="Coalition for Queens"
-              width="100"
-              height="30"
-              align="center"
-            />
-          </div>
-        </div>
+        <div className='smaller-box'>
+          <p>Have an account? <Link to='/users/login'>Login</Link></p>
+        </div> {/* End smaller-box */}
       </div>
     );
   }
 }
 
-export default NewUserMain;
+export default NewUserMain
