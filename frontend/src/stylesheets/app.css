@@ -150,59 +150,34 @@ font-family: 'Quicksand', sans-serif;
 
 
 
-/*****PROFILE PAGE********/
-
-/* .infoContainer{
-  display: flex;
-justify-content: center;
-
-} */
-.userIMG{
-  display: flex;
-  justify-content: flex-start;
-width: 130px;
-height: 130px;
-border-radius: 5em;
-}
-.userImageContainer, .containerForBtn{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: space-between;
-}
-
-.userIMG{
-  border-radius: 50%;
-}
-
 /****************user info*/
-.newInfoForm{
+/* .newInfoForm{
   display: flex;
   justify-content: center;
   flex-direction: column;
   border: solid 2px black;
 }
+
 .formInput{
   display: flex;
   color: blue;
   justify-content: center;
-
 }
+
 .mainContainer{
   display: flex;
   justify-content: center;
   font-size: 2.5em;
-}
+} */
 
 /******************user edit******************/
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
+/* html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
   background-size: cover;
   height:100%;
-}
+} */
 
-#feedback-page{
+/* #feedback-page{
 	text-align:center;
 }
 
@@ -258,10 +233,10 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 .focused{
 	color:#30aed6;
 	border:#30aed6 solid 3px;
-}
+} */
 
 /* Icons ---------------------------------- */
-#name{
+/* #name{
 	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
@@ -367,4 +342,4 @@ editInput:focus, textarea:focus {
 		padding-left: 3%;
 		padding-right: 3%;
 	}
-}
+} */
