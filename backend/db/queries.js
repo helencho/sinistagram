@@ -38,9 +38,9 @@ function getAllUsers(req, res, next) {
 
 function editUser(req, res, next) {
     db.any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
-        [req.body.newName, req.body.newEmail, req.body.newFullname, req.body.newProfile_pic, req.body.newDescription, req.params.id])
+        [req.body.newName, req.body.newEmail, req.body.newFullName, req.body.newProfilePic, req.body.newDescription, req.params.id])
         .then(function (data) {
-            console.log("data:", data, "req.body:", req.body)
+            // console.log("data:", data, "req.body:", req.body)
             res.status(200)
                 .json({
                     status: 'success',
@@ -48,7 +48,7 @@ function editUser(req, res, next) {
                 });
         })
         .catch(function (err) {
-            console.log(`backennd err`, err)
+            // console.log(`backennd err`, err)
             return next(err);
         });
 }
