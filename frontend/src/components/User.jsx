@@ -10,7 +10,7 @@ import UploadPhoto from './UploadPhoto'
 
 class User extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             user: '',
             userID: '',
@@ -20,6 +20,7 @@ class User extends Component {
         }
     }
 
+    // Grab logged in user's information 
     getUserInfo = () => {
         const id = this.props.match.params.id
         axios

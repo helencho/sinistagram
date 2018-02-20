@@ -11,7 +11,7 @@ class NewUserMain extends Component {
       fullname: '',
       username: '',
       password: '',
-      profilepic: '',
+      profilepic: 'https://i.imgur.com/7L40Htk.jpg',
       userAvailable: '',
       message: 'By signing up, you agree to give us your firstborn.',
       validEmail: false

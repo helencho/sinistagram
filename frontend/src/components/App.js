@@ -13,7 +13,7 @@ class App extends Component {
     super()
     this.state = {
       user: null,
-      newUser: true
+      // newUser: true
     }
   }
 
@@ -48,7 +48,7 @@ class App extends Component {
   };
 
   render() {
-    const { user, newUser } = this.state
+    const { user } = this.state
     console.log(this.state)
 
     return (
@@ -72,7 +72,7 @@ class App extends Component {
               {user ?
                 <span>
                   <Link to={`/users/u/${user.user_id}/upload`}>
-                    <i className='far fa-images fa-2x'></i>
+                    <i className='far fa-images fa-2x' />
                   </Link>
                   <Link to={`/users/u/${user.user_id}/profile`}>
                     <i className='far fa-user fa-2x' />
@@ -80,7 +80,9 @@ class App extends Component {
                 </span>
                 :
                 <span>
-                  <i className='far fa-images fa-2x'></i>
+                  <Link to={`/users`}>
+                    <i className='far fa-images fa-2x' />
+                  </Link>
                   <Link to={`/users`}>
                     <i className='far fa-user fa-2x' />
                   </Link>
