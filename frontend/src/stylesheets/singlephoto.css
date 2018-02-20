@@ -1,17 +1,4 @@
 /*--------------------------------------------*/
-/*                   Fonts                    */
-/*--------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,500');
-
-
-body {
-    background-color: rgb(250, 250, 250);
-    font-size: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-}
-
-/*--------------------------------------------*/
 /*              SinglePhoto.jsx               */
 /*--------------------------------------------*/
 

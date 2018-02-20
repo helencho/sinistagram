@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { Route, Link, Switch } from "react-router-dom";
 
 import Profile from "./Profile";
-import "../stylesheets/app.css";
+import "../stylesheets/login.css";
 
 class LoginUser extends React.Component {
   state = {
