@@ -55,8 +55,8 @@ function editUser(req, res, next) {
 
 
 //Get all the photos from a single user
-function getAllPhotosFromSingleUser(req, res, next) {
-    db.any('SELECT photos.photo_id, photos.user_id, photos.photo_link, photos.caption, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON photos.user_id=users.user_id WHERE photos.user_id=$1',
+function getPhotosFromUser(req, res, next) {
+    db.any('SELECT photos.photo_id, photos.caption, photos.photo_link, photos.user_id AS author_id, users.username, users.profile_pic, count(likes.user_id) AS total_likes FROM photos JOIN users ON photos.user_id = users.user_id JOIN likes ON photos.photo_id = likes.photo_id WHERE users.user_id=$1 GROUP BY photos.photo_id, photos.caption, photos.photo_link, photos.user_id, users.username, users.profile_pic;',
         [req.params.id])
         .then(data => {
             // console.log("Data from backend single user photo:", data)
@@ -64,11 +64,46 @@ function getAllPhotosFromSingleUser(req, res, next) {
                 .json({
                     status: 'Success',
                     data: data,
-                    message: 'Retrieved the selected users photos'
+                    message: 'Retrieved all photos by user'
                 })
                 .catch(err => {
                     return next(err)
                 })
+        })
+}
+
+
+// // Get a photo's liked status depending on the user 
+// function getPhotoLikedStatus(req, res, next) {
+//     db
+//         .one('SELECT photo_id,CASE WHEN user_id=$1 THEN TRUE ELSE FALSE END AS liked FROM likes WHERE photo_id=$2;',
+//             [req.params.id])
+// .then(data => {
+//     res.status(200).json({
+//         status: 'Success',
+//         data: data,
+//         message: 'Retrieved total photo likes'
+//     })
+// })
+// .catch(err => {
+//     return next(err)
+// })
+// }
+
+// Returns a row if user liked a photo. Returns none if user didn't like photo 
+function getPhotoLikedStatus(req, res, next) {
+    db
+        .any('SELECT * FROM likes WHERE photo_id=$1 AND user_id=$2;',
+            [req.params.id, req.params.userid])
+        .then(data => {
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Retrieved photo like status by user'
+            })
+        })
+        .catch(err => {
+            return next(err)
         })
 }
 
@@ -87,6 +122,7 @@ function getPhotoLikes(req, res, next) {
             return next(err)
         })
 }
+
 //get a user by userid
 function getSingleUserID(req, res, next) {
     db.one('SELECT * FROM users WHERE user_id = $1',
@@ -269,7 +305,9 @@ module.exports = {
     getUserFollowers: getUserFollowers,
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
-    getAllPhotosFromSingleUser: getAllPhotosFromSingleUser,
+    getPhotosFromUser: getPhotosFromUser,
+    getPhotoLikes: getPhotoLikes,
+    getPhotoLikedStatus: getPhotoLikedStatus,
     getPhotoDetails: getPhotoDetails,
     getPhotoLikes: getPhotoLikes,
     getSingleUserID: getSingleUserID,
