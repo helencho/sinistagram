@@ -67,99 +67,44 @@ class Home extends Component {
                     .get(`/users/u/${user.following_id}/photos`)
                     .then(res => {
                         let photos = res.data.data
-                        // console.log(photos) 
                         photos.map(photo => {
+                            // See if user likes the photo or not 
+                            this.doesUserLikePhoto(photo, photo.photo_id)
+
+                            // // Add to photo feed state 
                             // this.setState({
                             //     photoFeed: [...this.state.photoFeed, photo]
                             // })
-                            // console.log(photo)
-                            this.doesUserLikePhoto(photo.photo_id)
                         })
-
-                        // Map through each photo by user 
-                        // photos.map(singlePhoto => {
-                        //     let id = singlePhoto.photo_id
-                        //     let singlePhotoToFeed = { ...singlePhoto }
-
-                        //     // Get likes per photo 
-                        //     axios
-                        //         .get(`/users/p/${id}/likes`)
-                        //         .then(res => {
-                        //             let detailData = res.data.data
-
-                        //             // Filter through state to drop duplicates 
-                        //             let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
-                        //             singlePhotoToFeed.total_likes = detailData.total_likes
-
-                        //             // Add total liked information to photo feed 
-                        //             this.setState({
-                        //                 photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                        //             })
-
-                        //         })
-                        //         .catch(err => {
-                        //             console.log(err)
-                        //         }) // End second ajax request 
-
-
-                        //     // Get details per photo 
-                        //     axios
-                        //         .get(`/users/p/${id}/details`)
-                        //         .then(res => {
-                        //             let details = res.data.data
-
-                        //             // Find user's name in liked by details 
-                        //             let userFound = details.find(item => item.liked_by_user_id === loggedInAs.user_id)
-
-                        //             // Filter through state to drop duplicates 
-                        //             let newPhotoFeed = this.state.photoFeed.filter(photo => photo.photo_id !== id)
-
-
-                        //             // If user is found, toggle liked to true for photo 
-                        //             if (userFound) {
-                        //                 singlePhotoToFeed.liked = true
-
-                        //                 // Add photo liked information to photo feed 
-                        //                 this.setState({
-                        //                     photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                        //                 })
-
-                        //                 // If user isn't found, toggle liked to false 
-                        //             } else {
-                        //                 singlePhotoToFeed.liked = false
-                        //                 this.setState({
-                        //                     photoFeed: [...newPhotoFeed, singlePhotoToFeed]
-                        //                 })
-                        //             }
-                        //         })
-                        //         .catch(err => {
-                        //             console.log(err)
-                        //         }) // End third ajax request 
-                        // })
-
                     })
-                    // .then(() => {
-                    //     this.doesUserLikePhoto() 
-                    // })
                     .catch(err => {
                         console.log(err)
-                    }) // End first ajax request 
+                    }) // End ajax request 
             })
 
         }
     }
 
-    doesUserLikePhoto = photo_id => {
-        // Check if logged in user likes each photo 
-        // Add liked = true 
-        // or liked = false, depending on if the user likes photo 
+    // See if logged in user likes the photo and add true/false 
+    doesUserLikePhoto = (photo, photo_id) => {
         let id = photo_id
         let userid = this.state.loggedInAs.user_id
 
         axios
             .get(`/users/p/${id}/likedby/${userid}`)
             .then(res => {
-                console.log(res.data)
+                let userFound = res.data.data
+                if (userFound.length === 0) {
+                    photo.liked = false
+                    this.setState({
+                        photoFeed: [...this.state.photoFeed, photo]
+                    })
+                } else if (userFound.length > 0) {
+                    photo.liked = true
+                    this.setState({
+                        photoFeed: [...this.state.photoFeed, photo]
+                    })
+                }
             })
             .catch(err => {
                 console.log(err)
@@ -173,18 +118,18 @@ class Home extends Component {
         let photo_id = e.target.name
         console.log(photo_id)
 
-        // axios
-        //     .post(`/users/p/${photo_id}/faved`, {
-        //         user_id: user_id,
-        //         photo_id: photo_id
-        //     })
-        //     .then(res => {
-        //         // console.log(res.data)
-        //         this.getPhotosFromFollowing()
-        //     })
-        //     .then(err => {
-        //         console.log(err)
-        //     })
+        axios
+            .post(`/users/p/${photo_id}/fave`, {
+                user_id: user_id,
+                photo_id: photo_id
+            })
+            .then(res => {
+                // console.log(res.data)
+                this.getPhotosFromFollowees() // this adds to the photo feed. Simply toggle liked to true or false 
+            })
+            .then(err => {
+                console.log(err)
+            })
     }
 
     unfavePhoto = e => {
