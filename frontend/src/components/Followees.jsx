@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import Profile from "./Profile";
 import "../stylesheets/following.css";
 
-class Following extends Component {
+class Followees extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allFollowing: this.props.following
+      allFollowing: this.props.followees
     };
   }
 
@@ -51,4 +51,4 @@ class Following extends Component {
     );
   }
 }
-export default Following;
+export default Followees

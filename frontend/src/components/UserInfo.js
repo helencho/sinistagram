@@ -3,7 +3,7 @@ import { Route, Link, Switch, Redirect } from "react-router-dom"
 import '../stylesheets/profile.css';
 import axios from 'axios'
 import Followers from './Followers'
-import Following from './Following'
+import Followees from './Followees'
 
 class UserInfo extends React.Component {
     constructor(props) {
