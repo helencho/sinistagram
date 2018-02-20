@@ -67,16 +67,24 @@ class App extends Component {
             </div> {/* End topbar-middle */}
 
             <div className='topbar-right'>
-              <i className='far fa-compass fa-2x' />
               <i className='far fa-heart fa-2x' />
+
               {user ?
-                <Link to={`/users/u/${user.user_id}/profile`}>
-                  <i className='far fa-user fa-2x' />
-                </Link>
+                <span>
+                  <Link to={`/users/u/${user.user_id}/upload`}>
+                    <i className='far fa-images fa-2x'></i>
+                  </Link>
+                  <Link to={`/users/u/${user.user_id}/profile`}>
+                    <i className='far fa-user fa-2x' />
+                  </Link>
+                </span>
                 :
-                <Link to={`/users`}>
-                  <i className='far fa-user fa-2x' />
-                </Link>
+                <span>
+                  <i className='far fa-images fa-2x'></i>
+                  <Link to={`/users`}>
+                    <i className='far fa-user fa-2x' />
+                  </Link>
+                </span>
               }
             </div> {/* End topbar-right */}
 

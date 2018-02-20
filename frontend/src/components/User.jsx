@@ -6,59 +6,60 @@ import Followers from './Followers'
 import Following from './Following'
 import SinglePhoto from './SinglePhoto'
 import EditUser from './EditUser'
+import UploadPhoto from './UploadPhoto'
 
 class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:'',
-            userID: '', 
-            following:'',
-            followers:'', 
+            user: '',
+            userID: '',
+            following: '',
+            followers: '',
             photos: [],
         }
     }
 
-getUserInfo= () => {
-    const id = this.props.match.params.id
-    axios
-    .get(`/users/u/${id}`)
-    .then(res => {
-        let UserInfo = res.data.data 
-        // console.log("res.data",res.data.data)
+    getUserInfo = () => {
+        const id = this.props.match.params.id
+        axios
+            .get(`/users/u/${id}`)
+            .then(res => {
+                let UserInfo = res.data.data
+                // console.log("res.data",res.data.data)
 
-        this.setState({
-            user: UserInfo,
-            userID: UserInfo.user_id
-        })
-        console.log('UserINFO: ' , UserInfo)
+                this.setState({
+                    user: UserInfo,
+                    userID: UserInfo.user_id
+                })
+                console.log('UserINFO: ', UserInfo)
 
-        this.getUserFollowers()
-        this.getUserFollowing()
-    })
-    .catch(err =>{
-        console.log(err)
-    })
+                this.getUserFollowers()
+                this.getUserFollowing()
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
-}
+    }
 
     componentDidMount() {
         console.log("component mounted!!!!!!!!!!!!")
         this.getUserInfo()
-       
+
     }
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const {user}= this.state
+        const { user } = this.state
         if (user) {
-          return <Profile user= {user} />
+            return <Profile user={user} />
         } else {
-          return <h1>Must be logged in</h1>
+            return <h1>Must be logged in</h1>
         }
-      }
-   
-      getUserFollowing = () => {
+    }
+
+    getUserFollowing = () => {
         const { userID } = this.state
         const id = userID
         console.log('we is ABOUT to call axios')
@@ -68,12 +69,12 @@ getUserInfo= () => {
                 let Following = res.data.data
                 console.log(Following)
                 this.setState({
-                    following:Following, 
+                    following: Following,
                 })
 
             })
     }
-    
+
     getUserFollowers = () => {
         const { userID } = this.state
         const id = userID
@@ -82,9 +83,9 @@ getUserInfo= () => {
             .get(`/users/u/${id}/followers`)
             .then(res => {
                 let Followers = res.data.data
-                console.log('FROM USERS: GETTING THE FOLLOWERS:' , Followers)
+                console.log('FROM USERS: GETTING THE FOLLOWERS:', Followers)
                 this.setState({
-                    followers:Followers
+                    followers: Followers
                 })
 
             })
@@ -92,23 +93,28 @@ getUserInfo= () => {
 
     renderFollowing = () => {
         const { following } = this.state;
-        return <Following following = { following }/>
+        return <Following following={following} />
     }
 
     renderFollowers = () => {
         const { followers } = this.state;
-        return <Followers followers = { followers } />
+        return <Followers followers={followers} />
+    }
+
+    renderUploadPhoto = () => {
+        return <UploadPhoto />
     }
 
     // renderPhoto = () => {
     //     return <SinglePhoto />
     // }
-editUser = () => {
-    const { user } = this.state;
-    return <EditUser user = {user}/>
-}
+    editUser = () => {
+        const { user } = this.state;
+        return <EditUser user={user} />
+    }
+
     render() {
-        console.log("THe fucking state:",this.state)
+        console.log("THe fucking state:", this.state)
 
         return (
             <div>
@@ -116,6 +122,7 @@ editUser = () => {
                 <Route path="/users/u/:id/edit" render={this.editUser} />
                 <Route path="/users/u/:id/following" render={this.renderFollowing} />
                 <Route path="/users/u/:id/followers" render={this.renderFollowers} />
+                <Route path="/users/u/:id/upload" render={this.renderUploadPhoto} />
                 <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} />
             </div>
         )
