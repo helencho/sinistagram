@@ -6,18 +6,15 @@ const passport = require('../auth/local')
 
 // User information functions 
 router.get('/', db.getAllUsers)
-// router.get('/u/:username', db.getSingleUser)
-router.get('/u/:id', db.getSingleUserID)
+router.get('/u/:id', db.getSingleUser)
 router.patch('/u/:id/edit', db.editUser)
-// router.put('/u/:userid/fave/:id', db.addUserLikes)
-router.get('/u/:id/following', db.getUserFollowing)
+router.get('/u/:id/following', db.getUserFollowees)
 router.get('/u/:id/followers', db.getUserFollowers) 
 router.get('/u/:id/photos', db.getPhotosFromUser)
 router.get('/p', db.getAllPhotos)
 router.get('/p/:id', db.getSinglePhoto)
 router.get('/p/:id/details', db.getPhotoDetails)
 router.post('/p/:id/fave', db.addUserLikes) 
-router.get('/p/:id/likes', db.getPhotoLikes)
 router.get('/p/:id/likedby/:userid', db.getPhotoLikedStatus)
 
 

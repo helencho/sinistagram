@@ -20,6 +20,25 @@ function getAllUsers(req, res, next) {
         })
 }
 
+// Get a user by user id
+function getSingleUser(req, res, next) {
+    db
+        .one('SELECT * FROM users WHERE user_id = $1',
+            [req.params.id])
+        .then(data => {
+            // console.log("Data from backend single user:", data)
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Retrieved selected user'
+            })
+        })
+        .catch(err => {
+            // console.log('  ERRORRRR', err)
+            return next(err)
+        })
+}
+
 // Information on the single user, including username and password
 // function getSingleUser(req, res, next) {
 //     db.one('SELECT * FROM users WHERE username=$1', [req.params.username])
@@ -108,43 +127,25 @@ function getPhotoLikedStatus(req, res, next) {
         })
 }
 
-function getPhotoLikes(req, res, next) {
-    db
-        .one('SELECT photos.photo_id, COUNT(likes.user_id) AS total_likes FROM likes JOIN photos ON photos.photo_id=likes.photo_id WHERE photos.photo_id=$1 GROUP BY photos.photo_id;',
-            [req.params.id])
-        .then(data => {
-            res.status(200).json({
-                status: 'Success',
-                data: data,
-                message: 'Retrieved total photo likes'
-            })
-        })
-        .catch(err => {
-            return next(err)
-        })
-}
+// function getPhotoLikes(req, res, next) {
+//     db
+//         .one('SELECT photos.photo_id, COUNT(likes.user_id) AS total_likes FROM likes JOIN photos ON photos.photo_id=likes.photo_id WHERE photos.photo_id=$1 GROUP BY photos.photo_id;',
+//             [req.params.id])
+//         .then(data => {
+//             res.status(200).json({
+//                 status: 'Success',
+//                 data: data,
+//                 message: 'Retrieved total photo likes'
+//             })
+//         })
+//         .catch(err => {
+//             return next(err)
+//         })
+// }
 
-// Get a user by userid
-function getSingleUserID(req, res, next) {
-    db
-        .one('SELECT * FROM users WHERE user_id = $1',
-            [req.params.id])
-        .then(data => {
-            // console.log("Data from backend single user:", data)
-            res.status(200).json({
-                status: 'Success',
-                data: data,
-                message: 'Retrieved selected user'
-            })
-        })
-        .catch(err => {
-            // console.log('  ERRORRRR', err)
-            return next(err)
-        })
-}
 
 // Information on the users that current user follows including username and full name (based on current user ID)
-function getUserFollowing(req, res, next) {
+function getUserFollowees(req, res, next) {
     db
         .any('SELECT user_following.user_id, user_following.following_id, users.username, users.fullname, users.profile_pic FROM user_following JOIN users ON user_following.following_id=users.user_id WHERE user_following.user_id=$1;',
             [req.params.id])
@@ -306,18 +307,15 @@ function logoutUser(req, res, next) {
 
 module.exports = {
     getAllUsers: getAllUsers,
-    // getSingleUser: getSingleUser,
+    getSingleUser: getSingleUser,
     editUser: editUser,
-    getUserFollowing: getUserFollowing,
+    getUserFollowees: getUserFollowees,
     getUserFollowers: getUserFollowers,
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
     getPhotosFromUser: getPhotosFromUser,
-    getPhotoLikes: getPhotoLikes,
     getPhotoLikedStatus: getPhotoLikedStatus,
     getPhotoDetails: getPhotoDetails,
-    getPhotoLikes: getPhotoLikes,
-    getSingleUserID: getSingleUserID,
     // loginUser: loginUser,
     addUserLikes: addUserLikes,
     registerUser: registerUser,
