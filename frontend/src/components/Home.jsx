@@ -213,7 +213,7 @@ class Home extends Component {
                         </div>
                     ))
                     :
-                    <h1>Nothing to show :(</h1>
+                    <h1>...</h1>
                 }
 
             </div>
