@@ -15,7 +15,6 @@ class Home extends Component {
 
     componentDidMount() {
         this.mountLoggedInUser()
-
     }
 
     // Set loggedInAs as the current user logged in 
@@ -23,13 +22,13 @@ class Home extends Component {
         this.setState({
             loggedInAs: this.props.user
         }, () => {
-            // Then get users that logged in user follows 
-            this.getFollowingUsers()
+            // Then get followee users 
+            this.getFolloweeUsers()
         })
     }
 
     // Make ajax request to see who the user follows 
-    getFollowingUsers = () => {
+    getFolloweeUsers = () => {
         const { loggedInAs } = this.state
 
         if (loggedInAs) {
@@ -124,7 +123,7 @@ class Home extends Component {
                 photo.liked = true
             }
         })
-        
+
         axios
             .post(`/users/p/${photo_id}/fave`, {
                 user_id: user_id,

@@ -72,7 +72,7 @@ class LoginUser extends React.Component {
     return (
       <div className="login-user-container">
         <div className="loginBox">
-          <h1 className="siteFont"> Instagram </h1>
+          <h1 className="siteFont">Parallelogram</h1>
 
           <form onSubmit={this.submitForm}>
             <input

@@ -102,7 +102,7 @@ class NewUserMain extends Component {
     return (
       <div className="register-user-container">
         <div className="registerBox">
-          <h1 className="siteFont">Instagram</h1>
+          <h1 className="siteFont">Parallelogram</h1>
           <form onSubmit={this.handleFormSubmit}>
             <input
               className="inputBoxes"
