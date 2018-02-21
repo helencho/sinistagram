@@ -15,6 +15,7 @@ router.get('/p', db.getAllPhotos)
 router.get('/p/:id', db.getSinglePhoto)
 router.get('/p/:id/details', db.getPhotoDetails)
 router.post('/p/:id/fave', db.addUserLikes) 
+router.get('/p/:id/upload'. db.uploadPhoto) 
 router.get('/p/:id/likedby/:userid', db.getPhotoLikedStatus)
 
 
