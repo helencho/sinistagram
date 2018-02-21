@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../stylesheets/uploadphoto.css'
 
 class UploadPhoto extends Component {
     constructor() {
@@ -24,6 +25,7 @@ class UploadPhoto extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        console.log('Add image')
         // Check that url is a valid url 
         // Send post request to add image: userid, photourl, caption 
     }
@@ -33,13 +35,15 @@ class UploadPhoto extends Component {
         console.log(this.state)
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className='upload-photo-container'>
+                <div className='upload-photo-box'>
                     <h1>Upload photo</h1>
-                    <input type='text' value={imgURL} placeholder='Paste image URL' name='imgURL' onChange={this.handleInput} />
-                    <input type='text' value={caption} placeholder='Caption' name='caption' onChange={this.handleInput} />
-                    <input type='submit' value='Add Image' />
-                </form>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type='text' value={imgURL} placeholder='Paste image URL' name='imgURL' onChange={this.handleInput} />
+                        <textarea value={caption} placeholder='Caption' name='caption' onChange={this.handleInput} />
+                        <input type='submit' value='Add Image' />
+                    </form>
+                </div>
             </div>
         )
     }
