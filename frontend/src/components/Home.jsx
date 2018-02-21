@@ -156,8 +156,11 @@ class Home extends Component {
         // Find photo in the feed, set liked to true, add 1 to total likes 
         newPhotoFeed.map(photo => {
             if (photo.photo_id.toString() === photo_id) {
-                photo.liked = true
-                photo.total_likes = parseInt(photo.total_likes) + 1
+                // If user has not liked photo 
+                if (!photo.liked) {
+                    photo.liked = true
+                    photo.total_likes = parseInt(photo.total_likes) + 1
+                }
             }
         })
 
@@ -179,10 +182,9 @@ class Home extends Component {
     }
 
     unfavePhoto = e => {
-        const { loggedInAs } = this.state
-        let user_id = loggedInAs.user_id
+        let user_id = this.state.loggedInAs.user_id
         let photo_id = e.target.name
-        console.log(photo_id)
+        console.log('unfaving photo ' + photo_id)
     }
 
     render() {
@@ -202,7 +204,10 @@ class Home extends Component {
                                 <img src={photo.photo_link} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
-                                {photo.liked ? <button name={photo.photo_id} onClick={this.unfavePhoto} className='homefeed-card-liked-button'></button> : <button name={photo.photo_id} onClick={this.favePhoto} className='homefeed-card-unliked-button'></button>}
+                                {photo.liked ?
+                                    <button name={photo.photo_id} onClick={this.unfavePhoto} className='homefeed-card-liked-button'></button>
+                                    :
+                                    <button name={photo.photo_id} onClick={this.favePhoto} className='homefeed-card-unliked-button'></button>}
                             </div>
                             <div className='homefeed-card-likes'>
                                 <p>{photo.total_likes} likes</p>
