@@ -77,13 +77,15 @@ class LoginUser extends Component {
               type='text'
               name='usernameInput'
               value={usernameInput}
-              onChange={this.handleInput} />
+              onChange={this.handleInput} 
+              required />
             <input
               placeholder='Password'
               type='password'
               name='passwordInput'
               value={passwordInput}
-              onChange={this.handleInput} />
+              onChange={this.handleInput} 
+              required />
             <input type='submit' value='Log in' />
           </form>
 
