@@ -18,6 +18,21 @@ class NewUserMain extends Component {
     }
   }
 
+  componentDidMount() {
+    this.getAllUsers() 
+  }
+
+  getAllUsers = () => {
+    axios
+      .get('/users')
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   // Track username and password input inside state
   handleInput = e => {
     this.setState({
@@ -122,25 +137,29 @@ class NewUserMain extends Component {
               placeholder='Email'
               name='email'
               onChange={this.handleInput}
-              value={email} />
+              value={email}
+              required />
             <input
               type='text'
               placeholder='Full Name'
               name='fullname'
               onChange={this.handleInput}
-              value={fullname} />
+              value={fullname}
+              required />
             <input
               type='text'
               placeholder='Username'
               name='username'
               onChange={this.handleInput}
-              value={username} />
+              value={username}
+              required />
             <input
               type='password'
               placeholder='Password'
               name='password'
               onChange={this.handleInput}
-              value={password} />
+              value={password}
+              required />
             <input
               type='submit'
               value='Sign up' />
