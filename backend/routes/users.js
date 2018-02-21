@@ -11,11 +11,11 @@ router.patch('/u/:id/edit', db.editUser)
 router.get('/u/:id/following', db.getUserFollowees)
 router.get('/u/:id/followers', db.getUserFollowers) 
 router.get('/u/:id/photos', db.getPhotosFromUser)
+router.post('/u/:id/upload', db.uploadPhoto) 
 router.get('/p', db.getAllPhotos)
 router.get('/p/:id', db.getSinglePhoto)
 router.get('/p/:id/details', db.getPhotoDetails)
-router.post('/p/:id/fave', db.addUserLikes) 
-router.get('/p/:id/upload'. db.uploadPhoto) 
+router.post('/p/:id/fave', db.favePhoto) 
 router.get('/p/:id/likedby/:userid', db.getPhotoLikedStatus)
 
 

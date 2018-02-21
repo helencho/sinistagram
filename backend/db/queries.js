@@ -41,8 +41,9 @@ function getSingleUser(req, res, next) {
 
 // Update a single user's username, email, full name, profile ic, and user description
 function editUser(req, res, next) {
-    db.any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
-        [req.body.newName, req.body.newEmail, req.body.newFullName, req.body.newProfilePic, req.body.newDescription, req.params.id])
+    db
+        .any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
+            [req.body.newName, req.body.newEmail, req.body.newFullName, req.body.newProfilePic, req.body.newDescription, req.params.id])
         .then((data) => {
             // console.log("data:", data, "req.body:", req.body)
             res.status(200)
@@ -218,9 +219,10 @@ function getPhotoDetails(req, res, next) {
 //     })(req, res, next)
 // }
 
-function addUserLikes(req, res, next) {
-    db.none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2);',
-        [req.body.user_id, req.body.photo_id])
+function favePhoto(req, res, next) {
+    db
+        .none('INSERT INTO likes (user_id, photo_id) VALUES ($1, $2);',
+            [req.body.user_id, req.body.photo_id])
         .then(() => {
             res.status(200).json({
                 message: 'Liked photo'
@@ -233,10 +235,12 @@ function addUserLikes(req, res, next) {
 
 function uploadPhoto(req, res, next) {
     db
-        .none('INSERT INTO photos (user_id, photo_link, caption) VALUES ($1, $2, $3)',
-            [req.body.user_id, req.body.photo_link, req.body.caption])
-        .then(() => {
+        .one('INSERT INTO photos (user_id, photo_link, caption) VALUES ($1, $2, $3) RETURNING photo_id;',
+            [req.params.id, req.body.photo_link, req.body.caption])
+        .then(data => {
             res.status(200).json({
+                status: 'Success',
+                data: data,
                 message: 'Added photo'
             })
         })
@@ -285,7 +289,7 @@ module.exports = {
     getPhotoLikedStatus: getPhotoLikedStatus,
     getPhotoDetails: getPhotoDetails,
     // loginUser: loginUser,
-    addUserLikes: addUserLikes,
+    favePhoto: favePhoto,
     uploadPhoto: uploadPhoto,
     registerUser: registerUser,
     logoutUser: logoutUser

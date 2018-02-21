@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import '../stylesheets/uploadphoto.css'
 
 class UploadPhoto extends Component {
@@ -25,9 +26,34 @@ class UploadPhoto extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log('Add image')
+        const { user, imgURL, caption } = this.state
+        console.log('Adding image')
         // Check that url is a valid url 
-        // Send post request to add image: userid, photourl, caption 
+        // Send post request to add image: photo_link, caption 
+        axios
+            .post(`/users/u/${user.user_id}/upload`, {
+                photo_link: imgURL,
+                caption: caption
+            })
+            .then(res => {
+                return res.data.data
+            })
+            .then(photo_id => {
+                axios
+                    .post(`/users/p/${photo_id}/fave`, {
+                        user_id: user.user_id,
+                        photo_id: photo_id
+                    })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
