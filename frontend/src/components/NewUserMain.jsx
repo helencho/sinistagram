@@ -28,7 +28,6 @@ class NewUserMain extends Component {
     axios
       .get('/users')
       .then(res => {
-        // console.log(res.data)
         this.setState({
           users: res.data.data
         })
@@ -49,81 +48,63 @@ class NewUserMain extends Component {
   handleFormSubmit = e => {
     e.preventDefault()
     const { users, email, username, password, fullname, profilepic } = this.state
+    let emailExists = users.find(user => user.email_add === email)
     let userExists = users.find(user => user.username === username)
-    // if (email) {
-    //   axios
-    //     .get('/users')
-    //     .then(res => {
-    //       console.log(res.data)
-    //       if (!res.data.data.find(n => n.email_add === email)) {
-    //         this.setState({
-    //           validEmail: true
-    //         })
-    //       } else {
-    //         this.setState({
-    //           validEmail: false,
-    //           message: 'Email already in use'
-    //         })
-    //       }
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+
+    // If all fields are filled out 
     if (email && fullname && username && password) {
+      // Check that username is at least 3 characters 
       if (username.length < 3) {
         this.setState({
           message: 'Username length must be at least 3'
         })
       }
-      if (userExists) {
-        this.setState({
-          message: 'User already exists'
-        })
-      }
+      // Check that password is at least 6 characters 
       if (password.length < 6) {
         this.setState({
           message: 'Password must be at least 6 characters'
         })
+      }
+
+      // Check that email isn't already in use 
+      if (emailExists) {
+        this.setState({
+          message: 'Email already in use'
+        })
+        // Check that username isn't already in use 
+      } else if (userExists) {
+        this.setState({
+          message: 'Username already in use'
+        })
       } else {
         axios
-          .get('/users')
-          .then(res => {
-            console.log(res.data)
-            if (!res.data.data.find(n => n.username === username)) {
-              axios
-                .post('/users/new', {
-                  username: username,
-                  password: password,
-                  email: email,
-                  fullname: fullname,
-                  profilepic: profilepic
-                })
-                .then(res => {
-                  console.log(res)
-                  this.setState({
-                    email: '',
-                    fullname: '',
-                    username: '',
-                    password: '',
-                    message: 'Registered successfully'
-                  })
-                })
-                .catch(err => {
-                  console.log(err)
-                  this.setState({
-                    email: '',
-                    fullname: '',
-                    username: '',
-                    password: '',
-                    message: 'Error registering'
-                  })
-                })
-            } else {
-              this.setState({
-                message: 'Username already exists'
-              })
-            }
+          .post('/users/new', {
+            username: username,
+            password: password,
+            email: email,
+            fullname: fullname,
+            profilepic: profilepic
           })
-          .catch(err => console.log(err))
+          .then(res => {
+            console.log(res)
+            this.setState({
+              email: '',
+              fullname: '',
+              username: '',
+              password: '',
+              message: 'Registered successfully'
+            })
+          })
+          .catch(err => {
+            console.log(err)
+            this.setState({
+              email: '',
+              fullname: '',
+              username: '',
+              password: '',
+              message: 'Error registering'
+            })
+          })
       }
     } else {
       this.setState({
