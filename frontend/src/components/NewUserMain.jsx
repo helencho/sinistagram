@@ -7,6 +7,7 @@ class NewUserMain extends Component {
   constructor() {
     super()
     this.state = {
+      users: '',
       email: '',
       fullname: '',
       username: '',
@@ -19,14 +20,18 @@ class NewUserMain extends Component {
   }
 
   componentDidMount() {
-    // this.getAllUsers() 
+    this.getAllUsers()
   }
 
+  // Get all users and put in state for later use 
   getAllUsers = () => {
     axios
       .get('/users')
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
+        this.setState({
+          users: res.data.data
+        })
       })
       .catch(err => {
         console.log(err)
@@ -43,8 +48,8 @@ class NewUserMain extends Component {
   // When user submits form
   handleFormSubmit = e => {
     e.preventDefault()
-    const { email, username, password, fullname, profilepic } = this.state
-
+    const { users, email, username, password, fullname, profilepic } = this.state
+    let userExists = users.find(user => user.username === username)
     // if (email) {
     //   axios
     //     .get('/users')
@@ -67,6 +72,11 @@ class NewUserMain extends Component {
       if (username.length < 3) {
         this.setState({
           message: 'Username length must be at least 3'
+        })
+      }
+      if (userExists) {
+        this.setState({
+          message: 'User already exists'
         })
       }
       if (password.length < 6) {
