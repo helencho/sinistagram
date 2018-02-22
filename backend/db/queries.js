@@ -42,10 +42,9 @@ function getSingleUser(req, res, next) {
 // Update a single user's username, email, full name, profile ic, and user description
 function editUser(req, res, next) {
     db
-        .any('UPDATE users SET username = $1, email_add = $2, fullname = $3, profile_pic = $4, user_description = $5 WHERE user_id = $6',
+        .none('UPDATE users SET username=$1, email=$2, fullname=$3, profile_url=$4, user_description=$5 WHERE user_id = $6',
             [req.body.newName, req.body.newEmail, req.body.newFullName, req.body.newProfilePic, req.body.newDescription, req.params.id])
-        .then((data) => {
-            // console.log("data:", data, "req.body:", req.body)
+        .then(() => {
             res.status(200)
                 .json({
                     status: 'success',
@@ -53,7 +52,6 @@ function editUser(req, res, next) {
                 })
         })
         .catch((err) => {
-            // console.log(`backennd err`, err)
             return next(err)
         })
 }
@@ -79,13 +77,13 @@ function editUser(req, res, next) {
 // Information on the users that current user follows including username and full name (based on current user ID)
 function getUserFollowees(req, res, next) {
     db
-        .any('SELECT user_following.user_id, user_following.following_id, users.username, users.fullname, users.profile_pic FROM user_following JOIN users ON user_following.following_id=users.user_id WHERE user_following.user_id=$1;',
+        .any('SELECT follower_id, followee_id, users.username, users.fullname, users.profile_url FROM follows JOIN users ON followee_id=users.user_id WHERE follower_id=$1;',
             [req.params.id])
         .then(data => {
             res.status(200).json({
                 status: 'Success',
                 data: data,
-                message: 'Retrieved user followees'
+                message: 'Retrieved followees'
             })
         })
         .catch(err => {
@@ -96,13 +94,13 @@ function getUserFollowees(req, res, next) {
 // Information on the users that follow current user (based on current user ID)
 function getUserFollowers(req, res, next) {
     db
-        .any('SELECT user_followers.user_id, user_followers.follower_id, users.username, users.fullname, users.profile_pic FROM user_followers JOIN users ON user_followers.follower_id=users.user_id WHERE user_followers.user_id=$1',
+        .any('SELECT followee_id, follower_id, users.username, users.fullname, users.profile_url FROM follows JOIN users ON follower_id=users.user_id WHERE followee_id=$1;',
             [req.params.id])
         .then(data => {
             res.status(200).json({
                 status: 'Success',
                 data: data,
-                message: 'Retrieved user followers'
+                message: 'Retrieved followers'
             })
         })
         .catch(err => {
@@ -112,12 +110,11 @@ function getUserFollowers(req, res, next) {
 
 function followUser(req, res, next) {
     db
-        .any('INSERT INTO user_following (user_id, following_id) VALUES ($1, $2) RETURNING user_id;',
-            [req.body.user_id, req.body.following_id])
-        .then(data => {
+        .none('INSERT INTO follows (followee_id, follower_id) VALUES ($1, $2);',
+            [req.body.followee_id, req.body.user_id])
+        .then(() => {
             res.status(200).json({
                 status: 'Success',
-                data: data,
                 message: 'Followed user'
             })
         })
@@ -129,10 +126,9 @@ function followUser(req, res, next) {
 // Get all the photos from a single user
 function getPhotosFromUser(req, res, next) {
     db
-        .any('SELECT photos.photo_id, photos.caption, photos.photo_link, photos.user_id AS author_id, users.username, users.profile_pic, count(likes.user_id) AS total_likes FROM photos LEFT JOIN users ON photos.user_id = users.user_id LEFT JOIN likes ON photos.photo_id = likes.photo_id WHERE users.user_id=$1 GROUP BY photos.photo_id, photos.caption, photos.photo_link, photos.user_id, users.username, users.profile_pic;',
+        .any('SELECT photos.photo_id, photos.caption, photos.photo_url, photos.user_id AS author_id, users.username, users.profile_url, count(likes.user_id) AS total_likes FROM photos LEFT JOIN users ON photos.user_id = users.user_id LEFT JOIN likes ON photos.photo_id = likes.photo_id WHERE users.user_id=$1 GROUP BY photos.photo_id, photos.caption, photos.photo_url, photos.user_id, users.username, users.profile_url;',
             [req.params.id])
         .then(data => {
-            // console.log("Data from backend single user photo:", data)
             res.status(200)
                 .json({
                     status: 'Success',
@@ -181,7 +177,7 @@ function getAllPhotos(req, res, next) {
 // Information on photo, including caption and image url
 function getSinglePhoto(req, res, next) {
     db
-        .one('SELECT photos.photo_id, photos.photo_link, photos.caption, users.user_id, users.username, users.fullname, users.profile_pic FROM photos JOIN users ON users.user_id=photos.user_id WHERE photos.photo_id=$1',
+        .one('SELECT photos.photo_id, photos.photo_url, photos.caption, users.user_id, users.username, users.fullname, users.profile_url FROM photos JOIN users ON users.user_id=photos.user_id WHERE photos.photo_id=$1',
             [req.params.id])
         .then(data => {
             res.status(200).json({
@@ -198,7 +194,7 @@ function getSinglePhoto(req, res, next) {
 // Information on which users liked photo 
 function getPhotoDetails(req, res, next) {
     db
-        .any('SELECT photos.photo_id, users.user_id AS liked_by_user_id, users.username, users.profile_pic FROM photos JOIN likes ON photos.photo_id=likes.photo_id JOIN users ON likes.user_id=users.user_id WHERE photos.photo_id=$1;',
+        .any('SELECT photos.photo_id, users.user_id AS liked_by_user_id, users.username, users.profile_url FROM photos JOIN likes ON photos.photo_id=likes.photo_id JOIN users ON likes.user_id=users.user_id WHERE photos.photo_id=$1;',
             [req.params.id])
         .then(data => {
             res.status(200).json({
@@ -251,8 +247,8 @@ function favePhoto(req, res, next) {
 
 function uploadPhoto(req, res, next) {
     db
-        .one('INSERT INTO photos (user_id, photo_link, caption) VALUES ($1, $2, $3) RETURNING photo_id;',
-            [req.params.id, req.body.photo_link, req.body.caption])
+        .one('INSERT INTO photos (user_id, photo_url, caption) VALUES ($1, $2, $3) RETURNING photo_id;',
+            [req.params.id, req.body.photo_url, req.body.caption])
         .then(data => {
             res.status(200).json({
                 status: 'Success',
@@ -269,8 +265,8 @@ function uploadPhoto(req, res, next) {
 // Registers user using email, username, password, fullname
 function registerUser(req, res, next) {
     let hash = authHelpers.createHash(req.body.password)
-    db.none('INSERT INTO users (username, password_digest, email_add, fullname, profile_pic) VALUES ($1, $2, $3, $4, $5)',
-        [req.body.username, hash, req.body.email, req.body.fullname, req.body.profilepic])
+    db.none('INSERT INTO users (username, password_digest, email, fullname, profile_url) VALUES ($1, $2, $3, $4, $5)',
+        [req.body.username, hash, req.body.email, req.body.fullname, req.body.profile_url])
         .then(() => {
             res.status(200).json({
                 message: 'Registration successful'
