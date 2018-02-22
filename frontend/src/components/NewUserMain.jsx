@@ -19,7 +19,7 @@ class NewUserMain extends Component {
   }
 
   componentDidMount() {
-    this.getAllUsers() 
+    // this.getAllUsers() 
   }
 
   getAllUsers = () => {

@@ -36,9 +36,10 @@ class UploadPhoto extends Component {
                 caption: caption
             })
             .then(res => {
-                return res.data.data
+                return res.data.data.photo_id
             })
             .then(photo_id => {
+                // console.log(photo_id)
                 axios
                     .post(`/users/p/${photo_id}/fave`, {
                         user_id: user.user_id,
