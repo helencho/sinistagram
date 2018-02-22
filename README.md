@@ -1,6 +1,6 @@
 # Parallelogram 
 
-A fullstack app for sharing photos with family and friends. It's your favorite photo-sharing platform in the universe, inspired by [Instagram](https://www.instagram.com/) from our sister universe. Original project code can be viewed [here](https://github.com/helencho/insta-clone).
+A fullstack app for sharing photos with family and friends. It's your favorite photo-sharing platform in the universe, inspired by [Instagram](https://www.instagram.com/) from our sister universe. Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
 
 
 ## Features 
