@@ -4,32 +4,33 @@ CREATE DATABASE instaclone;
 \c instaclone;
 
 CREATE TABLE users (
-  user_id SERIAL PRIMARY KEY,
-  username VARCHAR,
-  password_digest VARCHAR,
-  email_add VARCHAR,
-  fullname VARCHAR,
-  profile_pic VARCHAR,
-  user_description VARCHAR,
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR,
+    password_digest VARCHAR,
+    email VARCHAR,
+    fullname VARCHAR,
+    profile_url VARCHAR,
+    user_description VARCHAR,
     UNIQUE(username)
 );
 
-INSERT INTO users (username, password_digest, email_add, fullname, profile_pic, user_description)
-  VALUES 
-    ('OptimusPrime', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'optimusprime@gmail.com', 'Optimus Prime', 'https://i.imgur.com/dM53kPP.jpg', 'First!!!'),
+INSERT INTO users (username, password_digest, email, fullname, profile_url, user_description)
+    VALUES 
+    ('sweet', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'sweet@gmail.com', 'Sweetie Cake', 'https://i.imgur.com/dM53kPP.jpg', 'sugar and spice and everything nice'),
     ('eattheworld', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'eattheworld@gmail.com', 'Rebecca Malone', 'https://i.imgur.com/DMCL1EE.jpg', 'Conquering the world, one meal at a time.'),
     ('xyz', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'xyz@gmail.com', 'XYZ', 'https://i.imgur.com/fcu89jr.jpg', 'xray yankee zulu'),
-    ('Lev', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'lev@gmail.com', 'Lev', 'https://i.imgur.com/67FUmGv.jpg', 'We are all dogs');
+    ('Lev', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'lev@gmail.com', 'Lev', 'https://i.imgur.com/67FUmGv.jpg', 'We are all dogs'),
+    ('guest', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'guest@gmail.com', 'Guest', 'https://i.imgur.com/H14nFKL.jpg', 'I have a lot of random hobbies.')
 ;
 
 CREATE TABLE photos (
     photo_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users,
-    photo_link VARCHAR,
+    photo_url VARCHAR,
     caption VARCHAR
 );
 
-INSERT INTO photos (user_id, photo_link, caption)
+INSERT INTO photos (user_id, photo_url, caption)
     VALUES 
     (1, 'https://i.imgur.com/dM53kPP.jpg', 'Use the ultimate app'),
     (1, 'https://i.imgur.com/vLIoOqb.jpg', '$___$'),
@@ -54,11 +55,10 @@ INSERT INTO photos (user_id, photo_link, caption)
     (4, 'https://i.imgur.com/3eAA6j5.jpg', 'Dog'),
     (4, 'https://i.imgur.com/BumKSM3.jpg', 'Doggo'),
     (4, 'https://i.imgur.com/rfnizG7.jpg', 'Dogs'),
-    (4, 'https://i.imgur.com/PqduKpK.jpg', 'Dogz');
+    (4, 'https://i.imgur.com/PqduKpK.jpg', 'Dogz')
+;
     
     
-
-
 CREATE TABLE likes (
     user_id INTEGER REFERENCES users,
     photo_id INTEGER REFERENCES photos
@@ -121,41 +121,62 @@ INSERT INTO likes (user_id, photo_id)
     (3, 22),
     (1, 23),
     (2, 23),
-    (3, 23);
+    (3, 23)
+;
 
 
-CREATE TABLE user_followers (
-    user_id INTEGER REFERENCES users,
-    follower_id INTEGER
-);
+CREATE TABLE follows (
+    followee_id INTEGER,
+    follower_id INTEGER 
+); 
 
-INSERT INTO user_followers (user_id, follower_id)
-    VALUES 
+INSERT INTO follows (followee_id, follower_id) 
+    VALUES
+    (1, 1),
     (1, 2),
     (1, 3),
     (1, 4),
-    (2, 4),
-    (3, 1),
-    (3, 2),
-    (4, 1),
-    (4, 2),
-    (4, 3);
-
-CREATE TABLE user_following (
-    user_id INTEGER REFERENCES users,
-    following_id INTEGER
-);
-
-INSERT INTO user_following (user_id, following_id)
-    VALUES 
-    (1, 2),
-    (1, 3),
-    (1, 4),
+    (1, 5),
+    (2, 2),
     (2, 1),
-    (2, 3),
+    (3, 3),
     (3, 1),
-    (3, 2),
-    (3, 4),
+    (4, 4),
     (4, 1),
-    (4, 2),
-    (4, 3);
+    (5, 5),
+    (5, 1)
+;
+
+
+-- CREATE TABLE user_followers (
+--     user_id INTEGER REFERENCES users,
+--     follower_id INTEGER
+-- );
+-- INSERT INTO user_followers (user_id, follower_id)
+--     VALUES 
+--     (1, 2),
+--     (1, 3),
+--     (1, 4),
+--     (2, 4),
+--     (3, 1),
+--     (3, 2),
+--     (4, 1),
+--     (4, 2),
+--     (4, 3);
+-- CREATE TABLE user_following (
+--     user_id INTEGER REFERENCES users,
+--     following_id INTEGER
+-- );
+-- INSERT INTO user_following (user_id, following_id)
+--     VALUES 
+--     (1, 2),
+--     (1, 3),
+--     (1, 4),
+--     (2, 1),
+--     (2, 3),
+--     (3, 1),
+--     (3, 2),
+--     (3, 4),
+--     (4, 1),
+--     (4, 2),
+--     (4, 3);

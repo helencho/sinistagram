@@ -110,6 +110,22 @@ function getUserFollowers(req, res, next) {
         })
 }
 
+function followUser(req, res, next) {
+    db
+        .any('INSERT INTO user_following (user_id, following_id) VALUES ($1, $2) RETURNING user_id;',
+            [req.body.user_id, req.body.following_id])
+        .then(data => {
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Followed user'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
+}
+
 // Get all the photos from a single user
 function getPhotosFromUser(req, res, next) {
     db
@@ -283,6 +299,7 @@ module.exports = {
     editUser: editUser,
     getUserFollowees: getUserFollowees,
     getUserFollowers: getUserFollowers,
+    followUser: followUser,
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
     getPhotosFromUser: getPhotosFromUser,

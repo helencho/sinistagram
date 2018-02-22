@@ -77,6 +77,7 @@ class NewUserMain extends Component {
           message: 'Username already in use'
         })
       } else {
+        // Send post request to add registration information to database 
         axios
           .post('/users/new', {
             username: username,
@@ -95,6 +96,7 @@ class NewUserMain extends Component {
               message: 'Registered successfully'
             })
           })
+          // Then send post request to add self as followee to database 
           .catch(err => {
             console.log(err)
             this.setState({
