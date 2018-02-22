@@ -5,7 +5,7 @@ A fullstack app for sharing photos with family and friends. It's your favorite p
 
 ## Features 
 
-Log in and register securely using Bcrypt for authentication and verification of credentials. Log in as a guest. 
+Log in and register securely using Bcrypt for authentication and verification of credentials. Log in as a guest using the guest button. 
 
 ![Guest login button](./public/guest.png)
 
