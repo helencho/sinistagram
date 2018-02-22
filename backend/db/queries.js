@@ -113,7 +113,7 @@ function getUserFollowers(req, res, next) {
 // Get all the photos from a single user
 function getPhotosFromUser(req, res, next) {
     db
-        .any('SELECT photos.photo_id, photos.caption, photos.photo_link, photos.user_id AS author_id, users.username, users.profile_pic, count(likes.user_id) AS total_likes FROM photos JOIN users ON photos.user_id = users.user_id JOIN likes ON photos.photo_id = likes.photo_id WHERE users.user_id=$1 GROUP BY photos.photo_id, photos.caption, photos.photo_link, photos.user_id, users.username, users.profile_pic;',
+        .any('SELECT photos.photo_id, photos.caption, photos.photo_link, photos.user_id AS author_id, users.username, users.profile_pic, count(likes.user_id) AS total_likes FROM photos LEFT JOIN users ON photos.user_id = users.user_id LEFT JOIN likes ON photos.photo_id = likes.photo_id WHERE users.user_id=$1 GROUP BY photos.photo_id, photos.caption, photos.photo_link, photos.user_id, users.username, users.profile_pic;',
             [req.params.id])
         .then(data => {
             // console.log("Data from backend single user photo:", data)
