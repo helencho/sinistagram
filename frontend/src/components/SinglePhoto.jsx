@@ -37,8 +37,8 @@ class SinglePhoto extends Component {
                     authorId: photoData.user_id,
                     authorName: photoData.fullname,
                     authorUsername: photoData.username,
-                    authorImgUrl: photoData.profile_pic,
-                    photoUrl: photoData.photo_link,
+                    authorImgUrl: photoData.profile_url,
+                    photoUrl: photoData.photo_url,
                     photoCaption: photoData.caption
                 })
 
@@ -52,7 +52,7 @@ class SinglePhoto extends Component {
                             let user = {
                                 id: item.liked_by_user_id,
                                 username: item.username,
-                                picUrl: item.profile_pic
+                                picUrl: item.profile_url
                             }
                             users = [...users, user]
                         })
@@ -91,12 +91,9 @@ class SinglePhoto extends Component {
 
     render() {
         const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
-        // console.log(this.state.liked)
         const totalLikes = likedByUsers.length
         const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
-        // console.log('user liked: ' + liked)
         console.log(this.state)
-        console.log(photoUrl)
 
         return (
             <div className='single-photo-container'>

@@ -48,7 +48,7 @@ class NewUserMain extends Component {
   handleFormSubmit = e => {
     e.preventDefault()
     const { users, email, username, password, fullname, profilepic } = this.state
-    let emailExists = users.find(user => user.email_add === email)
+    let emailExists = users.find(user => user.email === email)
     let userExists = users.find(user => user.username === username)
 
     // If all fields are filled out 
@@ -84,7 +84,7 @@ class NewUserMain extends Component {
             password: password,
             email: email,
             fullname: fullname,
-            profilepic: profilepic
+            profile_url: profilepic
           })
           .then(res => {
             console.log(res)

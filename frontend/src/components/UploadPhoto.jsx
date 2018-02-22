@@ -32,26 +32,27 @@ class UploadPhoto extends Component {
         // Send post request to add image: photo_link, caption 
         axios
             .post(`/users/u/${user.user_id}/upload`, {
-                photo_link: imgURL,
+                photo_url: imgURL,
                 caption: caption
             })
             .then(res => {
-                return res.data.data.photo_id
+                // return res.data.data.photo_id
+                console.log(res.data) 
             })
-            .then(photo_id => {
-                // console.log(photo_id)
-                axios
-                    .post(`/users/p/${photo_id}/fave`, {
-                        user_id: user.user_id,
-                        photo_id: photo_id
-                    })
-                    .then(res => {
-                        console.log(res.data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-            })
+            // .then(photo_id => {
+            //     // console.log(photo_id)
+            //     axios
+            //         .post(`/users/p/${photo_id}/fave`, {
+            //             user_id: user.user_id,
+            //             photo_id: photo_id
+            //         })
+            //         .then(res => {
+            //             console.log(res.data)
+            //         })
+            //         .catch(err => {
+            //             console.log(err)
+            //         })
+            // })
             .catch(err => {
                 console.log(err)
             })

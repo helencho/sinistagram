@@ -13,10 +13,9 @@ class User extends Component {
         super(props)
         this.state = {
             user: '',
-            userID: '',
-            followees: '',
-            followers: '',
-            photos: [],
+            followees: [],
+            followers: [],
+            photos: []
         }
     }
 
@@ -32,33 +31,38 @@ class User extends Component {
             .then(res => {
                 let user = res.data.data
                 this.setState({
-                    user: user,
-                    userID: user.user_id
+                    user: user
                 })
+            })
+            .then(() => {
+                this.getUserPhotos()
                 this.getUserFollowees()
                 this.getUserFollowing()
             })
             .catch(err => {
                 console.log(err)
             })
-
     }
 
-    // Render the user's profile based on user ID 
-    renderProfile = () => {
+    // Get logged in user's photos 
+    getUserPhotos = () => {
         const { user } = this.state
-        if (user) {
-            return <Profile user={user} />
-        } else {
-            return <h1>Must be logged in</h1>
-        }
+        axios
+            .get(`/users/u/${user.user_id}/photos`)
+            .then(res => {
+                let photos = res.data.data
+                this.setState({
+                    photos: photos
+                })
+            })
+            .catch(err => console.log(err))
     }
 
     // Get logged in user's followees 
     getUserFollowees = () => {
-        const { userID } = this.state
+        const { user } = this.state
         axios
-            .get(`/users/u/${userID}/following`)
+            .get(`/users/u/${user.user_id}/followees`)
             .then(res => {
                 let followees = res.data.data
                 this.setState({
@@ -70,9 +74,9 @@ class User extends Component {
 
     // Get logged in user's followers 
     getUserFollowers = () => {
-        const { userID } = this.state
+        const { user } = this.state
         axios
-            .get(`/users/u/${userID}/followers`)
+            .get(`/users/u/${user.user_id}/followers`)
             .then(res => {
                 let followers = res.data.data
                 this.setState({
@@ -80,6 +84,20 @@ class User extends Component {
                 })
             })
             .catch(err => console.log(err))
+    }
+
+    // Render the user's profile based on user ID 
+    renderProfile = () => {
+        const { user, photos, followees, followers } = this.state
+        if (user) {
+            return <Profile
+                user={user}
+                photos={photos}
+                followees={followees}
+                followers={followers} />
+        } else {
+            return <h1>Must be logged in</h1>
+        }
     }
 
     renderFollowees = () => {

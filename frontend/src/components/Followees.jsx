@@ -5,10 +5,10 @@ import "../stylesheets/following.css";
 
 class Followees extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      allFollowing: this.props.followees
-    };
+    super(props)
+    // this.state = {
+    //   allFollowing: this.props.followees
+    // };
   }
 
   onClick = user => {
@@ -16,25 +16,25 @@ class Followees extends Component {
   };
 
   render() {
-    const { allFollowing } = this.state;
-    console.log("HELLLLOOOO PRINCESS", allFollowing);
+    const { followees } = this.props
+
     return (
       <div className="following-container">
         <div className="following-title">Following</div>
         <div className="following-list-box">
-          {this.props.following.map(user => (
-            <div className="users" id={user.following_id}>
+          {followees.map(user => (
+            <div className="users" id={user.followee_id}>
               <div className="onClick" onClick={this.onClick(user)}>
-                <Link to={`/users/u/${user.following_id}/profile`}>
+                <Link to={`/users/u/${user.followee_id}/profile`}>
                   <div className="following-image">
                     <img
                       className="following-profile-pic"
-                      src={user.profile_pic}
+                      src={user.profile_url}
                     />
                   </div>
                 </Link>
                 <div className="username-fullname">
-                  <Link to={`/users/u/${user.following_id}/profile`}>
+                  <Link to={`/users/u/${user.followee_id}/profile`}>
                     <h2 className="following-username">{user.username} </h2>
                   </Link>
 

@@ -34,7 +34,7 @@ class Home extends Component {
         // If user is logged in, get all following users under user's id 
         if (loggedInAs) {
             axios
-                .get(`/users/u/${loggedInAs.user_id}/following`)
+                .get(`/users/u/${loggedInAs.user_id}/followees`)
                 .then(res => {
                     let followees = res.data.data
                     // Set state in followees array 
@@ -64,7 +64,7 @@ class Home extends Component {
 
                 // Get photos and total likes by current user 
                 axios
-                    .get(`/users/u/${user.following_id}/photos`)
+                    .get(`/users/u/${user.followee_id}/photos`)
                     .then(res => {
                         let photos = res.data.data
                         photos.map(photo => {
@@ -197,11 +197,11 @@ class Home extends Component {
                     photoFeed.map((photo) => (
                         <div className='homefeed-card-container'>
                             <div className='homefeed-card-meta'>
-                                <img src={photo.profile_pic} alt={`Picture`} className='homefeed-card-userprof' />
+                                <img src={photo.profile_url} alt={`Picture`} className='homefeed-card-userprof' />
                                 <p className='homefeed-card-username'><Link to={`/users/u/${photo.author_id}/profile`}>{photo.username}</Link></p>
                             </div>
                             <div className='homefeed-card-img'>
-                                <img src={photo.photo_link} alt='Awesome photo' />
+                                <img src={photo.photo_url} alt='Awesome photo' />
                             </div>
                             <div className='homefeed-card-heart'>
                                 {photo.liked ?
