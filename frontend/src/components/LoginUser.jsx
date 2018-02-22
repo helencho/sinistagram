@@ -23,6 +23,14 @@ class LoginUser extends Component {
     })
   }
 
+  // Handle guest login button 
+  handleGuestLogin = () => {
+    this.setState({
+      usernameInput: 'guest',
+      passwordInput: '123456'
+    })
+  }
+
   submitForm = e => {
     e.preventDefault()
     const { usernameInput, passwordInput, loggedIn } = this.state
@@ -54,13 +62,12 @@ class LoginUser extends Component {
             message: 'Username/password not found'
           })
         })
-
     }
   }
 
   render() {
     const { usernameInput, passwordInput, message, loggedIn } = this.state
-    console.log(this.state) 
+    console.log(this.state)
 
     if (loggedIn) {
       return <Redirect to='/users/home' />
@@ -77,16 +84,17 @@ class LoginUser extends Component {
               type='text'
               name='usernameInput'
               value={usernameInput}
-              onChange={this.handleInput} 
+              onChange={this.handleInput}
               required />
             <input
               placeholder='Password'
               type='password'
               name='passwordInput'
               value={passwordInput}
-              onChange={this.handleInput} 
+              onChange={this.handleInput}
               required />
             <input type='submit' value='Log in' />
+            <input type='button' value='Guest' onClick={this.handleGuestLogin} />
           </form>
 
           <p className='login-message'>{message}</p>

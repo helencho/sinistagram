@@ -28,6 +28,7 @@
 }
 
 .login-user-container form input[type='submit'],
+.login-user-container form input[type='button'],
 .register-user-container form input[type='submit'] {
   background-color: #3897f0;
   outline: none;
@@ -43,6 +44,12 @@
   color: white;
   font-size: 14px;
   margin-top: 6%;
+}
+
+.login-user-container form input[type='button'] {
+  background-color: #fff;
+  color: #3897f0;
+  margin-top: 3%;
 }
 
 .login-user-container form input[type='text'],
