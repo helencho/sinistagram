@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link, Switch } from 'react-router-dom'
-import axios from 'axios'
+import { Route, Link } from 'react-router-dom'
 import '../stylesheets/app.css'
 import LoginUser from '../components/LoginUser'
 import LogOut from '../components/LogOut'
@@ -12,30 +11,29 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: null,
-      // newUser: true
+      user: null
     }
   }
 
   setUser = user => {
     this.setState({ user: user })
-  };
+  }
 
   logOutUser = () => {
     this.setState({ user: null })
-  };
+  }
 
   renderLogin = () => {
     return <LoginUser setUser={this.setUser} />
-  };
+  }
 
   renderLogOut = () => {
     return <LogOut logOutUser={this.logOutUser} />
-  };
+  }
 
   renderNew = () => {
     return <NewUserMain />
-  };
+  }
 
   // Home is the feed screen
   renderHome = () => {
@@ -45,11 +43,11 @@ class App extends Component {
     } else {
       return this.renderLogin()
     }
-  };
+  }
 
   render() {
     const { user } = this.state
-    console.log(this.state)
+    // console.log(this.state)
 
     return (
       <div>
@@ -100,7 +98,9 @@ class App extends Component {
           <Route path='/users/new' render={this.renderNew} />
           <Route path='/users/logout' render={this.renderLogout} />
           <Route path='/users/home' render={this.renderHome} />
-          <Route path='/users/u/:id' component={User} />
+          <Route path="/users/u/:id" render={(props) => <User loggedInAs={user} {...props} />} />
+          {/* Passing params in render: https://stackoverflow.com/questions/45898789/react-router-pass-param-to-component */}
+          {/* <Route path='/users/u/:id' component={User} /> */}
         </div>
       </div>
     );

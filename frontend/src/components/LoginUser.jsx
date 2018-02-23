@@ -46,7 +46,6 @@ class LoginUser extends Component {
           password: passwordInput
         })
         .then(res => {
-          console.log('logging in user')
           console.log(res.data)
           this.props.setUser(res.data)
           this.setState({

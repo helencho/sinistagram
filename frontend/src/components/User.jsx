@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Profile from './Profile'
 import Followers from './Followers'
@@ -12,10 +12,12 @@ class User extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            loggedInAs: '',
             user: '',
             followees: [],
             followers: [],
-            photos: []
+            photos: [],
+            followStatus: false
         }
     }
 
@@ -31,6 +33,7 @@ class User extends Component {
             .then(res => {
                 let user = res.data.data
                 this.setState({
+                    loggedInAs: this.props.loggedInAs,
                     user: user
                 })
             })
@@ -71,30 +74,45 @@ class User extends Component {
             })
             .catch(err => console.log(err))
     }
+    // If logged in as user is null, button should be log in!! 
 
     // Get logged in user's followers 
     getUserFollowers = () => {
-        const { user } = this.state
+        const { loggedInAs, user } = this.state
         axios
             .get(`/users/u/${user.user_id}/followers`)
             .then(res => {
                 let followers = res.data.data
-                this.setState({
-                    followers: followers
-                })
+                let userFoundAsFollowee = followers.find(item => item.follower_id === loggedInAs.user_id)
+
+                // If logged in user is found in the followers list, set followStatus to true
+                if (userFoundAsFollowee) {
+                    this.setState({
+                        followStatus: true,
+                        followers: followers
+                    })
+                } else {
+                    this.setState({
+                        followStatus: false,
+                        followers: followers
+                    })
+                }
             })
             .catch(err => console.log(err))
     }
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const { user, photos, followees, followers } = this.state
+        const { loggedInAs, user, photos, followees, followers, followStatus } = this.state
         if (user) {
             return <Profile
+                loggedInAs={loggedInAs}
                 user={user}
                 photos={photos}
                 followees={followees}
-                followers={followers} />
+                followers={followers}
+                followStatus={followStatus}
+                handleFollow={this.handleFollow} />
         } else {
             return <h1>Must be logged in</h1>
         }
@@ -113,10 +131,28 @@ class User extends Component {
     renderUploadPhoto = () => {
         const { user } = this.state
         if (user) {
-            return <UploadPhoto user={user} getUserPhotos={this.getUserPhotos} />
+            return <UploadPhoto
+                user={user}
+                getUserPhotos={this.getUserPhotos} />
         } else {
             return <h1>Must be logged in</h1>
         }
+    }
+
+    handleFollow = () => {
+        console.log('Switching follow status to ' + !this.state.followStatus)
+        const { loggedInAs, user } = this.state
+
+        axios
+            .post(`/users/${loggedInAs.user_id}/follow`, {
+                followee_id: user.user_id
+            })
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     editUser = () => {

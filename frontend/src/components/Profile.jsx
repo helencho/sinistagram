@@ -1,10 +1,7 @@
 import React from 'react'
-import { Route, Link, Switch } from "react-router-dom"
 import '../stylesheets/app.css'
-import axios from "axios"
 import UserGallery from './UserGallery'
 import UserInfo from './UserInfo'
-import SinglePhoto from './SinglePhoto'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -15,10 +12,13 @@ class Profile extends React.Component {
         return (
             <div>
                 <UserInfo
+                    loggedInAs={this.props.loggedInAs}
                     user={this.props.user}
                     photos={this.props.photos}
                     followees={this.props.followees}
-                    followers={this.props.followers} />
+                    followers={this.props.followers}
+                    followStatus={this.props.followStatus}
+                    handleFollow={this.props.handleFollow} />
                 <UserGallery photos={this.props.photos} />
             </div>
         )
