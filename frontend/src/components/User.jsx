@@ -37,7 +37,7 @@ class User extends Component {
             .then(() => {
                 this.getUserPhotos()
                 this.getUserFollowees()
-                this.getUserFollowing()
+                this.getUserFollowers()
             })
             .catch(err => {
                 console.log(err)

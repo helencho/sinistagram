@@ -10,69 +10,10 @@ class UserInfo extends React.Component {
         super(props)
     }
 
-    // componentDidMount() {
-    //     this.getUserFollowees()
-    //     this.getUserFollowers()
-    //     this.getNumberOfPosts()
-    // }
-
-    // getUserFollowees = () => {
-    //     const { user } = this.state
-    //     axios
-    //         .get(`/users/u/${user.user_id}/following`)
-    //         .then(res => {
-    //             let followees = res.data.data
-    //             this.setState({
-    //                 numOfFollowees: followees.length
-    //             })
-    //         })
-    // }
-
-    // getUserFollowers = () => {
-    //     const { user } = this.state
-    //     axios
-    //         .get(`/users/u/${user.user_id}/followers`)
-    //         .then(res => {
-    //             let followers = res.data.data
-    //             this.setState({
-    //                 numOfFollowers: followers.length
-    //             })
-    //         })
-    // }
-
-    // getNumberOfPosts = () => {
-    //     const { user } = this.state
-    //     axios
-    //         .get(`/users/u/${user.user_id}/photos`)
-    //         .then(res => {
-    //             let posts = res.data.data
-    //             this.setState({
-    //                 numOfPosts: posts.length
-    //             })
-    //         })
-    // }
-
-    // clickFollowers = ()=>{
-    //     return(
-    //         <Followers followers={this.state.followers}/>
-    //     )
-    // }
-
-    // clickFollowing = () =>{
-    //     console.log('hiiiiii FOLLOWING')
-    //     return (
-    //         <Following following ={this.state.following} />
-
-    //     )
-    // }
-
     render() {
-        // const { user, numOfFollowees, numOfFollowers, numOfPosts } = this.state
-        // console.log(this.state)
-        const { user, photos, followees, followers } = this.props 
+        const { user, photos, followees, followers } = this.props
 
         return (
-            // <div>
             <div className="infoContainer">
 
                 <div className="userImageContainer">
@@ -102,7 +43,6 @@ class UserInfo extends React.Component {
                 </div>
 
             </div>
-            // </div>
 
         )
     }

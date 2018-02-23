@@ -8,7 +8,9 @@ class UploadPhoto extends Component {
         this.state = {
             user: '',
             imgURL: '',
-            caption: ''
+            caption: '',
+            date: '',
+            message: ''
         }
     }
 
@@ -27,39 +29,46 @@ class UploadPhoto extends Component {
     handleSubmit = e => {
         e.preventDefault()
         const { user, imgURL, caption } = this.state
+        let pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
         console.log('Adding image')
         // Check that url is a valid url 
-        // Send post request to add image: photo_link, caption 
-        axios
-            .post(`/users/u/${user.user_id}/upload`, {
-                photo_url: imgURL,
-                caption: caption
+
+        if (!pattern.test(imgURL)) {
+            this.setState({
+                message: 'Invalid image URL'
             })
-            .then(res => {
-                // return res.data.data.photo_id
-                console.log(res.data) 
-            })
-            // .then(photo_id => {
-            //     // console.log(photo_id)
-            //     axios
-            //         .post(`/users/p/${photo_id}/fave`, {
-            //             user_id: user.user_id,
-            //             photo_id: photo_id
-            //         })
-            //         .then(res => {
-            //             console.log(res.data)
-            //         })
-            //         .catch(err => {
-            //             console.log(err)
-            //         })
-            // })
-            .catch(err => {
-                console.log(err)
-            })
+        } else {
+            // Send post request to add image: photo_link, caption 
+            axios
+                .post(`/users/u/${user.user_id}/upload`, {
+                    photo_url: imgURL,
+                    caption: caption
+                })
+                .then(res => {
+                    console.log(res.data)
+                    // let date = new Date()                 
+            
+                    this.setState({
+                        imgURL: '',
+                        caption: '',
+                        // date: new Date(),
+                        message: 'Uploaded photo'
+                    })
+                })
+                .catch(err => {
+                    console.log(err)
+                    this.setState({
+                        imgURL: '',
+                        caption: '',
+                        // date: '',
+                        message: 'Error uploading :('
+                    })
+                })
+        }
     }
 
     render() {
-        const { user, imgURL, caption } = this.state
+        const { user, imgURL, caption, message } = this.state
         console.log(this.state)
 
         return (
@@ -71,6 +80,7 @@ class UploadPhoto extends Component {
                         <textarea value={caption} placeholder='Caption' name='caption' onChange={this.handleInput} />
                         <input type='submit' value='Add Image' />
                     </form>
+                    <p>{message}</p>
                 </div>
             </div>
         )
