@@ -89,8 +89,6 @@ class NewUserMain extends Component {
           .then(res => {
             let id = res.data.data[0].user_id
             return id
-            // console.log(id)
-
           })
           // Then send post request to add self as followee to database 
           .then(id => {

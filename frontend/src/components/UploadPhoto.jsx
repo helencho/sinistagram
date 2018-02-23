@@ -55,6 +55,10 @@ class UploadPhoto extends Component {
                         message: 'Uploaded photo'
                     })
                 })
+                .then(() => {
+                    // Rerender gallery photos on User component 
+                    this.props.getUserPhotos() 
+                })
                 .catch(err => {
                     console.log(err)
                     this.setState({

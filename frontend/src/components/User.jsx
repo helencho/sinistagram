@@ -113,7 +113,7 @@ class User extends Component {
     renderUploadPhoto = () => {
         const { user } = this.state
         if (user) {
-            return <UploadPhoto user={user} />
+            return <UploadPhoto user={user} getUserPhotos={this.getUserPhotos} />
         } else {
             return <h1>Must be logged in</h1>
         }
