@@ -111,7 +111,7 @@ function getUserFollowers(req, res, next) {
 function followUser(req, res, next) {
     db
         .none('INSERT INTO follows (followee_id, follower_id) VALUES ($1, $2);',
-            [req.body.followee_id, req.body.user_id])
+            [req.body.followee_id, req.params.id])
         .then(() => {
             res.status(200).json({
                 status: 'Success',
@@ -265,10 +265,13 @@ function uploadPhoto(req, res, next) {
 // Registers user using email, username, password, fullname
 function registerUser(req, res, next) {
     let hash = authHelpers.createHash(req.body.password)
-    db.none('INSERT INTO users (username, password_digest, email, fullname, profile_url) VALUES ($1, $2, $3, $4, $5)',
-        [req.body.username, hash, req.body.email, req.body.fullname, req.body.profile_url])
-        .then(() => {
+    db
+        .any('INSERT INTO users (username, password_digest, email, fullname, profile_url) VALUES ($1, $2, $3, $4, $5) RETURNING user_id;',
+            [req.body.username, hash, req.body.email, req.body.fullname, req.body.profile_url])
+        .then(data => {
             res.status(200).json({
+                status: 'Success',
+                data: data,
                 message: 'Registration successful'
             })
         })

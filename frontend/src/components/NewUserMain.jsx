@@ -87,16 +87,31 @@ class NewUserMain extends Component {
             profile_url: profilepic
           })
           .then(res => {
-            console.log(res)
-            this.setState({
-              email: '',
-              fullname: '',
-              username: '',
-              password: '',
-              message: 'Registered successfully'
-            })
+            let id = res.data.data[0].user_id
+            return id
+            // console.log(id)
+
           })
           // Then send post request to add self as followee to database 
+          .then(id => {
+            axios
+              .post(`/users/u/${id}/follow`, {
+                followee_id: id
+              })
+              .then(res => {
+                console.log(res.data)
+                this.setState({
+                  email: '',
+                  fullname: '',
+                  username: '',
+                  password: '',
+                  message: 'Registered successfully'
+                })
+              })
+              .catch(err => {
+                console.log(err)
+              })
+          })
           .catch(err => {
             console.log(err)
             this.setState({
