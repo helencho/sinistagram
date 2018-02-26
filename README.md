@@ -16,6 +16,7 @@ Browse through your homefeed based on who you follow.
 
 
 Like a photo. 
+
 ![Liking photo](./public/like-photo.gif)
 
 
