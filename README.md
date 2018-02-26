@@ -7,12 +7,16 @@ A fullstack app for sharing photos with family and friends. It's your favorite p
 
 Log in and register securely using Bcrypt for authentication and verification of credentials. Log in as a guest using the guest button. 
 
-![Guest login button](./public/guest.png)
+![Guest login button](./public/guest-login.gif)
 
 
 Browse through your homefeed based on who you follow. 
 
-![Homefeed](./public/homefeed.png)
+![Homefeed](./public/guest-feed.gif)
+
+
+Like a photo. 
+![Liking photo](./public/like-photo.gif)
 
 
 Upload a photo from the browser.
@@ -22,7 +26,7 @@ Upload a photo from the browser.
 
 Curate the picture-perfect life. 
 
-![User gallery](./public/user-gallery.png)
+![User gallery](./public/guest-gallery.gif)
 
 
 ## Getting Started
