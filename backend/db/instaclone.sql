@@ -16,10 +16,11 @@ CREATE TABLE users (
 
 INSERT INTO users (username, password_digest, email, fullname, profile_url, user_description)
     VALUES 
-    ('sweet', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'sweet@gmail.com', 'Sweetie Cake', 'https://i.imgur.com/dM53kPP.jpg', 'sugar and spice and everything nice'),
-    ('eattheworld', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'eattheworld@gmail.com', 'Rebecca Malone', 'https://i.imgur.com/DMCL1EE.jpg', 'Conquering the world, one meal at a time.'),
-    ('xyz', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'xyz@gmail.com', 'XYZ', 'https://i.imgur.com/fcu89jr.jpg', 'xray yankee zulu'),
-    ('Lev', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'lev@gmail.com', 'Lev', 'https://i.imgur.com/67FUmGv.jpg', 'We are all dogs'),
+    ('ursula', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'ursula@gmail.com', 'Ursula', 'https://i.imgur.com/jdT5ElI.jpg', 'voice is a powerful thing'),
+    ('voldemort', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'voldemort@gmail.com', 'Lord Voldemort', 'https://i.imgur.com/U6AnXOO.jpg', 'k e d a v r a'),
+    ('vader', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'vader@gmail.com', 'Darth Vader', 'https://i.imgur.com/ei2IBPt.jpg?1', '...'),
+    ('gaston', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'gaston@gmail.com', 'Gaston', 'https://i.imgur.com/gZwhWJP.jpg?1', '...'),
+    ('yzma', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'yzma@gmail.com', 'Yzma', 'https://i.imgur.com/va6o2B1.png', 'Pull the lever!'),
     ('guest', '$2a$10$brAZfSmByFeZmPZ/MH5zne9YDhugjW9CtsBGgXqGfix0g1tcooZWq', 'guest@gmail.com', 'Guest', 'https://i.imgur.com/H14nFKL.jpg', 'I have a lot of random hobbies.')
 ;
 
@@ -32,30 +33,29 @@ CREATE TABLE photos (
 
 INSERT INTO photos (user_id, photo_url, caption)
     VALUES 
-    (1, 'https://i.imgur.com/dM53kPP.jpg', 'Use the ultimate app'),
-    (1, 'https://i.imgur.com/vLIoOqb.jpg', '$___$'),
-    (1, 'https://i.imgur.com/4PstoiF.png', 'it\s a bug'),
-    (2, 'https://i.imgur.com/AOLmFM9.jpg', 'taiyaki with ice cream'),
-    (2, 'https://i.imgur.com/AQhhVY5.jpg', 'Always a good time for doughnuts'),
-    (2, 'https://i.imgur.com/wg73KhA.jpg', 'The best frozen treat is natural'),
-    (2, 'https://i.imgur.com/NpwcJvl.jpg', 'DIY chia seed pudding. Link in bio.'),
-    (2, 'https://i.imgur.com/Kblzuq1.jpg', 'Ice cream shakes'),
-    (2, 'https://i.imgur.com/DMCL1EE.jpg', 'Coffee or tea?'),
-    (2, 'https://i.imgur.com/UTrD4bl.jpg', 'Love these macarons.'),
-    (3, 'https://i.imgur.com/ZdQOwq1.jpg', 'West coast best coast'),
-    (3, 'https://i.imgur.com/Iuoi7Gg.jpg', 'Paradise'),
-    (3, 'https://i.imgur.com/EZ0Qnxg.jpg', 'Silent Hill'),
-    (3, 'https://i.imgur.com/RdjNiph.jpg', 'My love'),
-    (3, 'https://i.imgur.com/nhKbxvl.jpg', 'Top of the world'),
-    (3, 'https://i.imgur.com/OD8a8vx.jpg', 'Make love in this club'),
-    (3, 'https://i.imgur.com/K80Xcnz.jpg', 'Woodstock in my mind'),
-    (3, 'https://i.imgur.com/Tvz9Ro4.jpg', 'Booty'),
-    (3, 'https://i.imgur.com/U1iWksL.jpg', 'Baby its cold outside'),
-    (3, 'https://i.imgur.com/il7oLfd.jpg', 'Next'),
-    (4, 'https://i.imgur.com/3eAA6j5.jpg', 'Dog'),
-    (4, 'https://i.imgur.com/BumKSM3.jpg', 'Doggo'),
-    (4, 'https://i.imgur.com/rfnizG7.jpg', 'Dogs'),
-    (4, 'https://i.imgur.com/PqduKpK.jpg', 'Dogz')
+    (1, 'https://i.imgur.com/DuF8xQZ.jpg?1', 'Babieeees'),
+    (1, 'https://i.imgur.com/GZdeKSz.jpg?1', 'Tattoo inspo. What do you guys think?'),
+    (1, 'https://i.imgur.com/KEgcIPB.jpg', 'Tattoo inspo #2!'),
+    (1, 'https://i.imgur.com/93tO7Nj.jpg?1', 'I want this look :)'),
+    (1, 'https://i.imgur.com/QoNY8nK.jpg', '2018 is gonna be my year'),
+    (1, 'https://i.imgur.com/dwOUR3N.jpg?1', 'Me and the babes'),
+    (1, 'https://i.imgur.com/lsRKb8P.jpg?1', 'Anyone looking for a pair of legs? DM me.'),
+    (2, 'https://i.imgur.com/VvLHe23.jpg?1', 'Love this legend. Which one would you choose?'),
+    (2, 'https://i.imgur.com/7eFW0UU.jpg', 'The love of my life.'),
+    (2, 'https://i.imgur.com/R5k2osc.jpg?1', 'For spirit week. #SlytherinForever'),
+    (3, 'https://i.imgur.com/58lHHgM.jpg', 'I will always love you. #wcw'),
+    (3, 'https://i.imgur.com/A9BuM7h.jpg', 'Pledge your allegiance now.'),
+    (3, 'https://i.imgur.com/GGwv292.jpg?1', 'The empire''s might and strength'),
+    (4, 'https://i.imgur.com/q0A8DF6.png?1', 'had some fun night out in town ;)'),
+    (4, 'https://i.imgur.com/fITvw7j.jpg', 'this was #candid'),
+    (4, 'https://i.imgur.com/Tz8OVde.gif?1', 'name someone more talented'),
+    (4, 'https://i.imgur.com/sCNvn0V.jpg', 'i think im in love'),
+    (4, 'https://i.imgur.com/TDF5Qdl.jpg?1', 'psa: this beast is dangerous and a threat to humanity!'),
+    (5, 'https://i.imgur.com/VazQjIc.jpg?1', 'Me filling in for the emperor in his absence!'),
+    (5, 'https://i.imgur.com/CvN5HZV.png?1', 'If you''ve seen this llama, please contact me or Kronk.'),
+    (5, 'https://i.imgur.com/oWtD2vw.gifv', 'It''s not even my birthday...'),
+    (5, 'https://i.imgur.com/CAXGvsd.png?1', 'Science!'),
+    (5, 'https://i.imgur.com/DcWsPHM.jpg?1', 'I HATE THIS SQUIRREL')
 ;
     
     
@@ -67,61 +67,28 @@ CREATE TABLE likes (
 INSERT INTO likes (user_id, photo_id)
     VALUES 
     (1, 1),
-    (2, 1),
-    (3, 1),
-    (4, 1),
     (1, 2),
-    (3, 2),
-    (4, 2),
     (1, 3),
-    (1, 4),
+    (1, 4), 
     (1, 5),
     (1, 6),
-    (2, 6),
-    (3, 6),
     (1, 7),
-    (4, 7),
-    (1, 8),
-    (4, 8),
-    (1, 9),
-    (3, 9),
-    (4, 9),
-    (1, 10),
-    (1, 11),
-    (4, 11),
-    (1, 12),
-    (2, 12),
+    (2, 8),
+    (2, 9),
+    (2, 10),
+    (3, 11),
     (3, 12),
-    (1, 13),
-    (2, 13),
     (3, 13),
-    (1, 14),
-    (2, 14),
     (4, 14),
-    (1, 15),
-    (3, 15),
     (4, 15),
-    (1, 16),
-    (2, 16),
-    (1, 17),
-    (2, 17),
+    (4, 16),
     (4, 17),
-    (1, 18),
-    (3, 18),
     (4, 18),
-    (1, 19),
-    (2, 19),
-    (3, 19),
-    (1, 20),
-    (2, 20),
-    (1, 21),
-    (3, 21),
-    (1, 22),
-    (2, 22),
-    (3, 22),
-    (1, 23),
-    (2, 23),
-    (3, 23)
+    (5, 19),
+    (5, 20),
+    (5, 21),
+    (5, 22),
+    (5, 23)
 ;
 
 
@@ -137,6 +104,7 @@ INSERT INTO follows (followee_id, follower_id)
     (1, 3),
     (1, 4),
     (1, 5),
+    (1, 6),
     (2, 2),
     (2, 1),
     (2, 5),
@@ -144,39 +112,7 @@ INSERT INTO follows (followee_id, follower_id)
     (3, 1),
     (4, 4),
     (4, 1),
-    (5, 5)
+    (5, 5),
+    (6, 6),
+    (6, 1)
 ;
-
-
--- CREATE TABLE user_followers (
---     user_id INTEGER REFERENCES users,
---     follower_id INTEGER
--- );
--- INSERT INTO user_followers (user_id, follower_id)
---     VALUES 
---     (1, 2),
---     (1, 3),
---     (1, 4),
---     (2, 4),
---     (3, 1),
---     (3, 2),
---     (4, 1),
---     (4, 2),
---     (4, 3);
--- CREATE TABLE user_following (
---     user_id INTEGER REFERENCES users,
---     following_id INTEGER
--- );
--- INSERT INTO user_following (user_id, following_id)
---     VALUES 
---     (1, 2),
---     (1, 3),
---     (1, 4),
---     (2, 1),
---     (2, 3),
---     (3, 1),
---     (3, 2),
---     (3, 4),
---     (4, 1),
---     (4, 2),
---     (4, 3);
