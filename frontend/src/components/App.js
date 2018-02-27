@@ -65,10 +65,35 @@ class App extends Component {
             </div> {/* End topbar-middle */}
 
             <div className='topbar-right'>
-              <i className='far fa-heart fa-2x' />
+
+              {/* {user ?
+                <span>
+                  <Link to={`/users/u/${user.user_id}/explore`}>
+                    <img src='#' />
+                  </Link>
+                  <Link to={`/users/u/${user.user_id}/upload`}>
+                    <img src='#' />
+                  </Link>
+                  <Link to={`/users/u/${user.user_id}/profile`}>
+                    <img src='#' />
+                  </Link>
+                </span>
+                :
+                <span>
+                  <Link to={`/users`}>
+                    <img src='#' />
+                  </Link>
+                  <Link to={`/users`}>
+                    <img src='#' />
+                  </Link>
+                </span>
+              } */}
 
               {user ?
                 <span>
+                  <Link to={`/users/u/${user.user_id}/explore`}>
+                    <i className='fas fa-globe fa-2x' />
+                  </Link>
                   <Link to={`/users/u/${user.user_id}/upload`}>
                     <i className='far fa-images fa-2x' />
                   </Link>
@@ -78,6 +103,9 @@ class App extends Component {
                 </span>
                 :
                 <span>
+                  <Link to={`/users`}>
+                    <i className='fas fa-globe fa-2x' />
+                  </Link>
                   <Link to={`/users`}>
                     <i className='far fa-images fa-2x' />
                   </Link>

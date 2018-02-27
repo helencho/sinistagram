@@ -129,6 +129,12 @@ class User extends Component {
         return <Followers followers={followers} />
     }
 
+    renderExplore = () => {
+        return (
+            <h1>Explore all users</h1>
+        )
+    }
+
     renderUploadPhoto = () => {
         const { user } = this.state
         if (user) {
@@ -184,6 +190,7 @@ class User extends Component {
             <div>
                 <Route path="/users/u/:id/profile" render={this.renderProfile} />
                 <Route path="/users/u/:id/edit" render={this.editUser} />
+                <Route path="/users/u/:id/explore" render={this.renderExplore} />
                 <Route path="/users/u/:id/following" render={this.renderFollowees} />
                 <Route path="/users/u/:id/followers" render={this.renderFollowers} />
                 <Route path="/users/u/:id/upload" render={this.renderUploadPhoto} />
