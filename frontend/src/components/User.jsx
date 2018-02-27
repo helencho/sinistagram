@@ -112,7 +112,8 @@ class User extends Component {
                 followees={followees}
                 followers={followers}
                 followStatus={followStatus}
-                handleFollow={this.handleFollow} />
+                handleFollow={this.handleFollow}
+                handleUnfollow={this.handleUnfollow} />
         } else {
             return <h1>Must be logged in</h1>
         }
@@ -153,6 +154,13 @@ class User extends Component {
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    handleUnfollow = () => {
+        console.log('Switching follow status to ' + !this.state.followStatus) 
+        // const { loggedInAs, user } = this.state 
+
+        // Send request to delete a row where follower is = loggedInAs.user_id 
     }
 
     editUser = () => {

@@ -10,7 +10,7 @@ class UserInfo extends React.Component {
     }
 
     render() {
-        const { loggedInAs, user, photos, followees, followers, followStatus } = this.props
+        const { loggedInAs, user, photos, followees, followers, followStatus, handleFollow, handleUnfollow } = this.props
         console.log(this.props)
 
         return (
@@ -28,9 +28,9 @@ class UserInfo extends React.Component {
                         <div className='following-button'>
                             {loggedInAs ?
                                 followStatus ?
-                                    <button onClick={this.props.handleUnfollow}>Unfollow</button>
+                                    <button onClick={handleUnfollow}>Unfollow</button>
                                     :
-                                    <button onClick={this.props.handleFollow}>Follow</button>
+                                    <button onClick={handleFollow}>Follow</button>
                                 :
                                 <button>Login</button>
                             }

@@ -18,7 +18,8 @@ class Profile extends React.Component {
                     followees={this.props.followees}
                     followers={this.props.followers}
                     followStatus={this.props.followStatus}
-                    handleFollow={this.props.handleFollow} />
+                    handleFollow={this.props.handleFollow} 
+                    handleUnfollow={this.props.handleUnfollow} />
                 <UserGallery photos={this.props.photos} />
             </div>
         )
