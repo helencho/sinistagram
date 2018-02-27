@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import { Redirect } from 'react-router'
 import '../stylesheets/profile.css'
 
 class UserInfo extends React.Component {
@@ -30,7 +31,7 @@ class UserInfo extends React.Component {
                                     :
                                     <button onClick={handleFollow}>Follow</button>
                                 :
-                                <button>Login</button>
+                                <Link to='/users'><button>Login</button></Link>
                             }
                         </div>
                     </div>

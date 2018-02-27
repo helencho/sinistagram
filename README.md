@@ -56,6 +56,8 @@ The backend will be running on http://localhost:3001.
 
 ### Installing Frontend
 
+Open a new terminal window.
+
 ```
 cd frontend 
 npm install
@@ -63,7 +65,7 @@ npm start
 ```
 
 
-Open http://localhost:3000 to view the app in a browser.
+Open http://localhost:3000/users to view the app in a browser.
 
 
 
