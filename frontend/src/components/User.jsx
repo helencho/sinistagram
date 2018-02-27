@@ -145,7 +145,7 @@ class User extends Component {
         const { loggedInAs, user } = this.state
 
         axios
-            .post(`/users/${loggedInAs.user_id}/follow`, {
+            .post(`/users/u/${loggedInAs.user_id}/follow`, {
                 followee_id: user.user_id
             })
             .then(res => {
@@ -157,10 +157,19 @@ class User extends Component {
     }
 
     handleUnfollow = () => {
-        console.log('Switching follow status to ' + !this.state.followStatus) 
-        // const { loggedInAs, user } = this.state 
+        console.log('Switching follow status to ' + !this.state.followStatus)
+        const { loggedInAs, user } = this.state
 
-        // Send request to delete a row where follower is = loggedInAs.user_id 
+        axios
+            .post(`/users/u/${loggedInAs.user_id}/unfollow`, {
+                followee_id: user.user_id
+            })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     editUser = () => {

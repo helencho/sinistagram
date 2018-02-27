@@ -108,6 +108,7 @@ function getUserFollowers(req, res, next) {
         })
 }
 
+// Add follower to follows table 
 function followUser(req, res, next) {
     db
         .none('INSERT INTO follows (followee_id, follower_id) VALUES ($1, $2);',
@@ -116,6 +117,22 @@ function followUser(req, res, next) {
             res.status(200).json({
                 status: 'Success',
                 message: 'Followed user'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
+}
+
+// Delete follower from follows table 
+function unfollowUser(req, res, next) {
+    db
+        .none('DELETE FROM follows WHERE followee_id=$1 AND follower_id=$2;',
+            [req.body.followee_id, req.params.id])
+        .then(() => {
+            res.status(200).json({
+                status: 'Success',
+                message: 'Unfollowed user'
             })
         })
         .catch(err => {
@@ -299,6 +316,7 @@ module.exports = {
     getUserFollowees: getUserFollowees,
     getUserFollowers: getUserFollowers,
     followUser: followUser,
+    unfollowUser: unfollowUser,
     getAllPhotos: getAllPhotos,
     getSinglePhoto: getSinglePhoto,
     getPhotosFromUser: getPhotosFromUser,

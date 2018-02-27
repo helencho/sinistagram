@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../stylesheets/profile.css'
-// import Followers from './Followers'
-// import Followees from './Followees'
 
 class UserInfo extends React.Component {
     constructor(props) {
