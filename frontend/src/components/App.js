@@ -55,7 +55,7 @@ class App extends Component {
           <div className='topbar instaCloneFont'>
             <div className='topbar-left'>
               <Link to='/users/home'><i className='fab fa-instagram fa-2x' /></Link>
-              <span className='topbar-sitename'><Link to='/users/home'>Parallelogram</Link></span>
+              <span className='topbar-sitename'><Link to='/users/home'>Sinistagram</Link></span>
             </div> {/* End topbar-left */}
 
             <div className='topbar-middle'>
@@ -65,29 +65,6 @@ class App extends Component {
             </div> {/* End topbar-middle */}
 
             <div className='topbar-right'>
-
-              {/* {user ?
-                <span>
-                  <Link to={`/users/u/${user.user_id}/explore`}>
-                    <img src='#' />
-                  </Link>
-                  <Link to={`/users/u/${user.user_id}/upload`}>
-                    <img src='#' />
-                  </Link>
-                  <Link to={`/users/u/${user.user_id}/profile`}>
-                    <img src='#' />
-                  </Link>
-                </span>
-                :
-                <span>
-                  <Link to={`/users`}>
-                    <img src='#' />
-                  </Link>
-                  <Link to={`/users`}>
-                    <img src='#' />
-                  </Link>
-                </span>
-              } */}
 
               {user ?
                 <span>

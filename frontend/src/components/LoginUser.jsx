@@ -75,7 +75,7 @@ class LoginUser extends Component {
     return (
       <div className='login-user-container'>
         <div className='login-box'>
-          <h1 className='sitefont'>Parallelogram</h1>
+          <h1 className='sitefont'>Sinistagram</h1>
 
           <form onSubmit={this.submitForm}>
             <input

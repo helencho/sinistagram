@@ -135,7 +135,7 @@ class NewUserMain extends Component {
     return (
       <div className='register-user-container'>
         <div className='register-box'>
-          <h1 className='sitefont'>Parallelogram</h1>
+          <h1 className='sitefont'>Sinistagram</h1>
 
           <form onSubmit={this.handleFormSubmit}>
             <input
