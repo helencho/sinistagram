@@ -98,6 +98,7 @@ class SinglePhoto extends Component {
 
         return (
             <div className='single-photo-container'>
+                <button name='showPhoto' onClick={this.props.handleModal}>EXIT</button>
                 <div className='single-photo'>
                     <img className='single-photo-img' src={photoUrl} alt='image' />
                 </div>

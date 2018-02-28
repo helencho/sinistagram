@@ -32,7 +32,7 @@ class UserGallery extends React.Component {
                         <div className='grid-image-single-container overlay grey'>
                             <img className='grid-image-single' alt={photo.caption} src={photo.photo_url} name='showPhoto' id={photo.photo_id} onClick={this.handleModal} />
                             <ReactModal isOpen={showPhoto} contentLabel='Photo' className='modal-photo'>
-                                <SinglePhoto id={photo.author_id} photoid={photo.photo_id} />
+                                <SinglePhoto id={photo.author_id} photoid={photo.photo_id} handleModal={this.handleModal} />
                             </ReactModal>
                         </div>
                     ))}
