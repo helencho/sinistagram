@@ -63,14 +63,14 @@ class UserInfo extends React.Component {
                         <button name='showFollowers' onClick={this.handleModal}>
                             {followers.length} Followers
                         </button>
-                        <ReactModal isOpen={showFollowers} contentLabel='Followers'>
+                        <ReactModal isOpen={showFollowers} contentLabel='Followers' className='modal'>
                             <Followers followers={followers} handleModal={this.handleModal} />
                         </ReactModal>
 
                         <button name='showFollowees' onClick={this.handleModal}>
                             {followees.length} Following
                         </button>
-                        <ReactModal isOpen={showFollowees} contentLabel='Followees'>
+                        <ReactModal isOpen={showFollowees} contentLabel='Followees' className='modal'>
                             <Followees followees={followees} handleModal={this.handleModal} />
                         </ReactModal>
                     </div>

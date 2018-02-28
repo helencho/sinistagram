@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
-import "../stylesheets/following.css";
+import "../stylesheets/followers.css";
 
 class Followees extends Component {
   constructor(props) {
@@ -13,30 +13,26 @@ class Followees extends Component {
     console.log(followees)
 
     return (
-      <div className="following-container">
-        <div className="following-title">Following
-        <button name='showFollowees' onClick={handleModal}>X</button>
+      <div className='follow-container'>
+        <div className='follow-container-nav'>
+          <h1>Following</h1>
+          <button name='showFollowees' onClick={handleModal}>X</button>
         </div>
 
-        <div className="following-list-box">
+        <div className='follow-list-container'>
+
           {followees.map(user => (
-            <div className="users" id={user.followee_id}>
-              <div className="onClick">
-                <div className="following-image">
-                  <img className="following-profile-pic" src={user.profile_url} />
-                </div>
-
-                <div className="username-fullname">
-                  <Link to={`/users/u/${user.followee_id}/profile`}>
-                    <h2 className="following-username">{user.username} </h2>
-                  </Link>
-
-                  <h2 className="following-fullname">{user.fullname}</h2>
-                </div>
-                <button classsName="button-following">Following</button>
+            <div className='follow-list-single-user' id={user.followee_id}>
+              <div className='follow-list-single-img'>
+                <img src={user.profile_url} alt={user.username} />
+              </div>
+              <div className='follow-list-single-info'>
+                <Link to={`/users/u/${user.followee_id}/profile`}><p>{user.username}</p></Link>
+                <p className='follow-list-single-info-name'>{user.fullname}</p>
               </div>
             </div>
           ))}
+
         </div>
       </div>
     );

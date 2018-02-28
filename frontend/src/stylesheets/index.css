@@ -23,3 +23,38 @@ body {
   text-align: center;
   font-size: 10px;
 }
+
+
+/*--------------------------------------------*/
+/*                 Modal Window               */
+/*--------------------------------------------*/
+
+.modal {
+  position: absolute;
+  top: 50px;
+  left: 24%;
+  right: 24%;
+  bottom: 50px;
+  border: 1px solid rgb(204, 204, 204);
+  background: white;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 0;
+  margin-top: 46px;
+  transition: .5s all;
+}
+
+@media screen and (max-width: 1050px) {
+  .modal {
+    left: 12%;
+    right: 12%;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .modal {
+    left: 6%;
+    right: 6%;
+  }
+}

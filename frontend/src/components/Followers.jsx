@@ -14,34 +14,28 @@ class Followers extends Component {
         console.log(followers)
 
         return (
-            <div className="followers-container">
-                <div className="followers-title">Followers
-                <button name='showFollowers' onClick={handleModal}>X</button>
-                </div>
+            <div className='follow-container'>
 
-                <div className='follower-list-box'>
+                <div className='follow-container-nav'>
+                    <h1>Followers</h1>
+                    <button name='showFollowers' onClick={handleModal}>X</button>
+                </div>{/* End follow container top*/}
+
+                <div className='follow-list-container'>
 
                     {followers.map(user => (
-                        <div className='users' id={user.follower_id}>
-                            <div className='onClick'>
-                                <div className='follower-image'>
-                                    <img className='follower-profile-pic' src={user.profile_url} alt={user.username} />
-                                </div>
-
-                                <div className='username-fullname'>
-                                    <Link to={`/users/u/${user.follower_id}/profile`} >
-                                        <h2 className='follower-username'>{user.username}</h2>
-                                    </Link>
-
-                                    <h2 className="follower-fullname">{user.fullname}</h2>
-                                </div>
-                                <button className="button-follow">Follow</button>
+                        <div className='follow-list-single-user' id={user.follower_id}>
+                            <div className='follow-list-single-img'>
+                                <img src={user.profile_url} alt={user.username} />
+                            </div>
+                            <div className='follow-list-single-info'>
+                                <Link to={`/users/u/${user.follower_id}/profile`}><p>{user.username}</p></Link>
+                                <p className='follow-list-single-info-name'>{user.fullname}</p>
                             </div>
                         </div>
-
                     ))}
 
-                </div>
+                </div>{/* End follower list container */}
             </div>
         );
     }
