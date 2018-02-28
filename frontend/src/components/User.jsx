@@ -119,17 +119,17 @@ class User extends Component {
         }
     }
 
-    renderFollowees = () => {
-        const { followees, showModalFollowees } = this.state
-        return <Followees
-            followees={followees} />
-    }
+    // renderFollowees = () => {
+    //     const { followees, showModalFollowees } = this.state
+    //     return <Followees
+    //         followees={followees} />
+    // }
 
-    renderFollowers = () => {
-        const { followers, showModalFollowers } = this.state
-        return <Followers
-            followers={followers} />
-    }
+    // renderFollowers = () => {
+    //     const { followers, showModalFollowers } = this.state
+    //     return <Followers
+    //         followers={followers} />
+    // }
 
     renderExplore = () => {
         return (
@@ -180,10 +180,10 @@ class User extends Component {
             })
     }
 
-    editUser = () => {
-        const { user } = this.state
-        return <EditUser user={user} />
-    }
+    // editUser = () => {
+    //     const { user } = this.state
+    //     return <EditUser user={user} />
+    // }
 
     render() {
         console.log(this.state)
@@ -191,10 +191,10 @@ class User extends Component {
         return (
             <div>
                 <Route path="/users/u/:id/profile" render={this.renderProfile} />
-                <Route path="/users/u/:id/edit" render={this.editUser} />
+                {/* <Route path="/users/u/:id/edit" render={this.editUser} /> */}
                 <Route path="/users/u/:id/explore" render={this.renderExplore} />
-                <Route path="/users/u/:id/following" render={this.renderFollowees} />
-                <Route path="/users/u/:id/followers" render={this.renderFollowers} />
+                {/* <Route path="/users/u/:id/following" render={this.renderFollowees} /> */}
+                {/* <Route path="/users/u/:id/followers" render={this.renderFollowers} /> */}
                 <Route path="/users/u/:id/upload" render={this.renderUploadPhoto} />
                 <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} />
             </div>

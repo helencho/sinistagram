@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ReactModal from 'react-modal'
 import Followers from './Followers'
-// import { Redirect } from 'react-router'
+import Followees from './Followees'
+import EditUser from './EditUser'
 import '../stylesheets/profile.css'
 
 class UserInfo extends React.Component {
@@ -10,7 +11,8 @@ class UserInfo extends React.Component {
         super(props)
         this.state = {
             showFollowers: false,
-            showFollowees: false
+            showFollowees: false,
+            showEditUser: false
         }
     }
 
@@ -21,30 +23,30 @@ class UserInfo extends React.Component {
         })
     }
 
-    // renderModal = () => {
-    //     return (
-    //         <div>
-    //             <button onClick={this.handleOpenModal}>Open</button>
-    //             <ReactModal isOpen={this.state.showModal}
-    //                 contentLabel='Example'>
-    //                 <button onClick={this.handleCloseModal}>Close</button>
-    //             </ReactModal>
-    //         </div>
-    //     )
-    // }
-
     render() {
         const { loggedInAs, user, photos, followees, followers, followStatus, handleFollow, handleUnfollow } = this.props
+        const { showFollowers, showFollowees, showEditUser } = this.state
         console.log(this.props)
 
         return (
             <div className="infoContainer">
 
                 <div className="userImageContainer">
+                    <div>
+                        <button name='showEditUser' onClick={this.handleModal}>
+                            <img className="userIMG" src={user.profile_url} alt={user.username} onClick={this.handleModal} name='showEditUser'/>
+                        </button>
+                        <ReactModal isOpen={showEditUser} contentLabel='Edit'>
+                            <EditUser user={user} handleModal={this.handleModal} />
+                        </ReactModal>
+                    </div>
+                </div>
+
+                {/* <div className="userImageContainer">
                     <Link to={`edit`}>
                         <img className="userIMG" src={user.profile_url} alt={user.username} />
                     </Link>
-                </div>
+                </div> */}
 
                 <div className="allUserInfo">
                     <div className="usernameDiv">
@@ -65,20 +67,25 @@ class UserInfo extends React.Component {
                         <div className="stat">{photos.length} Posts</div>
 
                         <div>
-                            <button className="statFollow" name='showFollowers' onClick={this.handleModal}>Followers</button>
-                            <ReactModal isOpen={this.state.showFollowers} contentLabel='Followers'>
-                                <button name='showFollowers' onClick={this.handleModal}>Close</button>
-                                <Followers followers={followers} />
+                            <button name='showFollowers' onClick={this.handleModal}>Followers</button>
+                            <ReactModal isOpen={showFollowers} contentLabel='Followers'>
+                                <Followers followers={followers} handleModal={this.handleModal} />
                             </ReactModal>
                         </div>
 
+                        <div>
+                            <button name='showFollowees' onClick={this.handleModal}>Following</button>
+                            <ReactModal isOpen={showFollowees} contentLabel='Followees'>
+                                <Followees followees={followees} handleModal={this.handleModal} />
+                            </ReactModal>
+                        </div>
 
                         {/* <div className="statFollow">
                             <Link to={`/users/u/${user.user_id}/followers`}>{followers.length} Followers</Link>
-                        </div> */}
+                        </div>
                         <div className="statFollow">
                             <Link to={`/users/u/${user.user_id}/following`}>{followees.length} Following</Link>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="nameAndBio">
