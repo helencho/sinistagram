@@ -26,7 +26,8 @@ class SinglePhoto extends Component {
     getPhoto = () => {
         console.log('props:', this.props)
         // Photo id 
-        const id = this.props.match.params.photoid
+        // const id = this.props.match.params.photoid
+        const id = this.props.photoid
 
         // Get request to grab photo and photo's author information 
         axios

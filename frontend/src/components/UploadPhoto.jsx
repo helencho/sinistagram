@@ -46,7 +46,7 @@ class UploadPhoto extends Component {
                 })
                 .then(res => {
                     console.log(res.data)
-                    // let date = new Date()                 
+                    // let date = new Date()
             
                     this.setState({
                         imgURL: '',

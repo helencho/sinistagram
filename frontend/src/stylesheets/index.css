@@ -58,3 +58,24 @@ body {
     right: 6%;
   }
 }
+
+
+/*--------------------------------------------*/
+/*             Single Photo Modal             */
+/*--------------------------------------------*/
+
+.modal-photo {
+  position: absolute;
+  top: 50px;
+  left: 16%;
+  right: 16%;
+  bottom: 50px;
+  border: 1px solid rgb(204, 204, 204);
+  background: white;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 0;
+  margin-top: 46px;
+  transition: .5s all;
+}

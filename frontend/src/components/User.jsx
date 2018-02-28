@@ -196,7 +196,7 @@ class User extends Component {
                 {/* <Route path="/users/u/:id/following" render={this.renderFollowees} /> */}
                 {/* <Route path="/users/u/:id/followers" render={this.renderFollowers} /> */}
                 <Route path="/users/u/:id/upload" render={this.renderUploadPhoto} />
-                <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} />
+                {/* <Route exact path="/users/u/:id/photo/:photoid" component={SinglePhoto} /> */}
             </div>
         )
     }
