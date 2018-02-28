@@ -85,8 +85,9 @@ Open http://localhost:3000/users to view the app in a browser.
 
 ## Future Works 
 * Unfavorite photo 
-* Follow user 
+* __Follow user__
 * Unfollow user 
 * Post date 
 * Logout 
 * Search bar functionality 
+* Modals for edit, followers, following

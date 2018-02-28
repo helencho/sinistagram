@@ -42,12 +42,6 @@ class UserInfo extends React.Component {
                     </div>
                 </div>
 
-                {/* <div className="userImageContainer">
-                    <Link to={`edit`}>
-                        <img className="userIMG" src={user.profile_url} alt={user.username} />
-                    </Link>
-                </div> */}
-
                 <div className="allUserInfo">
                     <div className="usernameDiv">
                         <h1 id="usernameH1">{user.username}</h1>
