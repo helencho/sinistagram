@@ -7,6 +7,7 @@ import Followees from './Followees'
 import SinglePhoto from './SinglePhoto'
 import EditUser from './EditUser'
 import UploadPhoto from './UploadPhoto'
+import ReactModal from 'react-modal'
 
 class User extends Component {
     constructor(props) {
@@ -74,7 +75,6 @@ class User extends Component {
             })
             .catch(err => console.log(err))
     }
-    // If logged in as user is null, button should be log in!! 
 
     // Get logged in user's followers 
     getUserFollowers = () => {
@@ -103,7 +103,7 @@ class User extends Component {
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const { loggedInAs, user, photos, followees, followers, followStatus } = this.state
+        const { loggedInAs, user, photos, followees, followers, followStatus, showModalFollowers } = this.state
         if (user) {
             return <Profile
                 loggedInAs={loggedInAs}
@@ -120,13 +120,15 @@ class User extends Component {
     }
 
     renderFollowees = () => {
-        const { followees } = this.state
-        return <Followees followees={followees} />
+        const { followees, showModalFollowees } = this.state
+        return <Followees
+            followees={followees} />
     }
 
     renderFollowers = () => {
-        const { followers } = this.state
-        return <Followers followers={followers} />
+        const { followers, showModalFollowers } = this.state
+        return <Followers
+            followers={followers} />
     }
 
     renderExplore = () => {
