@@ -29,12 +29,12 @@ class UserInfo extends React.Component {
         console.log(this.props)
 
         return (
-            <div className="infoContainer">
+            <div className='info-container'>
 
-                <div className="userImageContainer">
+                <div className='info-user-img-container'>
                     <div>
                         <button name='showEditUser' onClick={this.handleModal}>
-                            <img className="userIMG" src={user.profile_url} alt={user.username} onClick={this.handleModal} name='showEditUser'/>
+                            <img className='info-user-img' src={user.profile_url} alt={user.username} onClick={this.handleModal} name='showEditUser' />
                         </button>
                         <ReactModal isOpen={showEditUser} contentLabel='Edit'>
                             <EditUser user={user} handleModal={this.handleModal} />
@@ -42,10 +42,10 @@ class UserInfo extends React.Component {
                     </div>
                 </div>
 
-                <div className="allUserInfo">
-                    <div className="usernameDiv">
-                        <h1 id="usernameH1">{user.username}</h1>
-                        <div className='following-button'>
+                <div className='info-follow-status'>
+                    <div className='follow-status-container'>
+                        <h1>{user.username}</h1>
+                        <div className='following-button-container'>
                             {loggedInAs ?
                                 followStatus ?
                                     <button onClick={handleUnfollow}>Unfollow</button>
@@ -57,34 +57,27 @@ class UserInfo extends React.Component {
                         </div>
                     </div>
 
-                    <div className="containerForNumberStats">
-                        <div className="stat">{photos.length} Posts</div>
+                    <div className='stats-container'>
+                        <button>{photos.length} Posts</button>
 
-                        <div>
-                            <button name='showFollowers' onClick={this.handleModal}>Followers</button>
-                            <ReactModal isOpen={showFollowers} contentLabel='Followers'>
-                                <Followers followers={followers} handleModal={this.handleModal} />
-                            </ReactModal>
-                        </div>
+                        <button name='showFollowers' onClick={this.handleModal}>
+                            {followers.length} Followers
+                        </button>
+                        <ReactModal isOpen={showFollowers} contentLabel='Followers'>
+                            <Followers followers={followers} handleModal={this.handleModal} />
+                        </ReactModal>
 
-                        <div>
-                            <button name='showFollowees' onClick={this.handleModal}>Following</button>
-                            <ReactModal isOpen={showFollowees} contentLabel='Followees'>
-                                <Followees followees={followees} handleModal={this.handleModal} />
-                            </ReactModal>
-                        </div>
-
-                        {/* <div className="statFollow">
-                            <Link to={`/users/u/${user.user_id}/followers`}>{followers.length} Followers</Link>
-                        </div>
-                        <div className="statFollow">
-                            <Link to={`/users/u/${user.user_id}/following`}>{followees.length} Following</Link>
-                        </div> */}
+                        <button name='showFollowees' onClick={this.handleModal}>
+                            {followees.length} Following
+                        </button>
+                        <ReactModal isOpen={showFollowees} contentLabel='Followees'>
+                            <Followees followees={followees} handleModal={this.handleModal} />
+                        </ReactModal>
                     </div>
 
-                    <div className="nameAndBio">
+                    <div className='bio-container'>
                         <h3>{user.fullname}</h3>
-                        <span className='bio'>{user.description}</span>
+                        <span className='bio'>{user.user_description}</span>
                     </div>
                 </div>
 
