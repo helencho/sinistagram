@@ -103,7 +103,7 @@ class User extends Component {
 
     // Render the user's profile based on user ID 
     renderProfile = () => {
-        const { loggedInAs, user, photos, followees, followers, followStatus, showModalFollowers } = this.state
+        const { loggedInAs, user, photos, followees, followers, followStatus } = this.state
         if (user) {
             return <Profile
                 loggedInAs={loggedInAs}

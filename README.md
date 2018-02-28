@@ -91,4 +91,4 @@ Open http://localhost:3000/users to view the app in a browser.
 * Logout 
 * Search bar functionality 
 * ~~Modals for edit, followers, following~~
-* Redirect user to clicked on user's profile page 
+* Switch profile to profile on username click 
