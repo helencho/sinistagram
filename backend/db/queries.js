@@ -262,6 +262,22 @@ function favePhoto(req, res, next) {
         })
 }
 
+// Delete photo and user id from likes table 
+function unfavePhoto(req, res, next) {
+    db
+        .none('DELETE FROM likes WHERE user_id=$1 AND photo_id=$2;',
+            [req.body.user_id, req.params.id])
+        .then(() => {
+            res.status(200).json({
+                status: 'Success',
+                message: 'Unfaved photo'
+            })
+        })
+        .catch(err => {
+            return next(err)
+        })
+}
+
 function uploadPhoto(req, res, next) {
     db
         .one('INSERT INTO photos (user_id, photo_url, caption) VALUES ($1, $2, $3) RETURNING photo_id;',
@@ -324,6 +340,7 @@ module.exports = {
     getPhotoDetails: getPhotoDetails,
     // loginUser: loginUser,
     favePhoto: favePhoto,
+    unfavePhoto: unfavePhoto,
     uploadPhoto: uploadPhoto,
     registerUser: registerUser,
     logoutUser: logoutUser
