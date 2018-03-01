@@ -78,6 +78,10 @@
     color: black;
 }
 
+.stats-container a:hover {
+    cursor: pointer;
+}
+
 .stats-container button {
     outline: none;
     border: none;
@@ -90,6 +94,9 @@
     margin-right: 6%;
 }
 
+.stats-container button:hover {
+    cursor: pointer;
+}
 
 .bio-container h3 {
     padding: 0;
@@ -121,15 +128,9 @@
     margin: 0;
 }
 
-/* .temp {
-    width: 31%;
-    padding-bottom: 30%;
-    background-color: rgb(255, 255, 255);
-    transition: 0.1s all;
-    overflow: hidden;
-    margin-bottom: 3%;
-    position: relative;
-} */
+.rowOfPics button:hover {
+    cursor: pointer;
+}
 
 .grid-image-single-container {
     width: 31%;
@@ -141,10 +142,18 @@
     position: relative;
 }
 
+.grid-image-single-container:hover {
+    cursor: pointer;
+}
+
 .grid-image-single {
     position: absolute;
     height: 100%;
     width: auto;
+}
+
+.grid-image-single:hover {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1060px) {
