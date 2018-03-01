@@ -24,7 +24,7 @@ class SinglePhoto extends Component {
     }
 
     getPhoto = () => {
-        console.log('props:', this.props)
+        // console.log('props:', this.props)
         // Photo id 
         // const id = this.props.match.params.photoid
         const id = this.props.photoid
@@ -94,7 +94,8 @@ class SinglePhoto extends Component {
         const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
         const totalLikes = likedByUsers.length
         const likedStatus = liked ? <i class="fas fa-heart"></i> : <i class="far fa-heart"></i>
-        console.log(this.state)
+        // console.log(this.state)
+        console.log(this.props.photoid)
 
         return (
             <div className='single-photo-container'>

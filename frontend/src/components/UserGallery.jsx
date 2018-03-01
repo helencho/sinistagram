@@ -10,20 +10,29 @@ class UserGallery extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showPhoto: false
+            showPhoto: false,
+            targetPhotoId: ''
         }
     }
 
     handleModal = e => {
-        console.log(e.target.name)
-        this.setState({
-            [e.target.name]: !this.state[e.target.name]
-        })
+        // console.log(e.target.name)
+        if (e.target.id) {
+            this.setState({
+                [e.target.name]: !this.state[e.target.name],
+                targetPhotoId: e.target.id
+            })
+        } else {
+            this.setState({
+                [e.target.name]: !this.state[e.target.name],
+                targetPhotoId: ''
+            })
+        }
     }
 
     render() {
-        const { showPhoto } = this.state
-        console.log(this.props)
+        const { showPhoto, targetPhotoId } = this.state
+        console.log(this.state)
 
         return (
             <div>
@@ -32,7 +41,7 @@ class UserGallery extends React.Component {
                         <div className='grid-image-single-container overlay grey'>
                             <img className='grid-image-single' alt={photo.caption} src={photo.photo_url} name='showPhoto' id={photo.photo_id} onClick={this.handleModal} />
                             <ReactModal isOpen={showPhoto} contentLabel='Photo' className='modal-photo'>
-                                <SinglePhoto id={photo.author_id} photoid={photo.photo_id} handleModal={this.handleModal} />
+                                <SinglePhoto photoid={targetPhotoId} handleModal={this.handleModal} />
                             </ReactModal>
                         </div>
                     ))}
