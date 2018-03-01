@@ -16,7 +16,6 @@ class UserGallery extends React.Component {
     }
 
     handleModal = e => {
-        // console.log(e.target.name)
         if (e.target.id) {
             this.setState({
                 [e.target.name]: !this.state[e.target.name],
