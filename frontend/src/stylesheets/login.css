@@ -1,4 +1,20 @@
 /*--------------------------------------------*/
+/*                Color Scheme                */
+/*--------------------------------------------*/
+/* color1: #34373c grey */
+/* color2: #141518 darkgrey */
+/* color3: #ab47bc purple NOPE */
+/*         #8e44ad purple YES? */
+/*         #7d3c98 purple TOO DARK */
+/*         #9933cc purple YES? BRIGHT */
+/*         rgb(190,0,131) purple pink */ 
+/*         rgb(148,0,105) purple --- CURRENT COLOR --- */
+/*         rgb(84,41,125) purple twitch */
+/* color4: #f2f2f2 whitesmoke */
+/* color5: #f2f2f2 low opacity */
+
+
+/*--------------------------------------------*/
 /*         Login/Register Page and Box        */
 /*--------------------------------------------*/
 .login-user-container,
@@ -13,8 +29,8 @@
   width: 300px;
   height: 45%;
   position: relative;
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: #34373c;
+  border: 1px solid rgba(242, 242, 242, 0.2);
   border-radius: 1px;
   margin: 0 auto;
   padding: 10px 0;
@@ -24,32 +40,36 @@
   text-align: center;
   font-size: 3em;
   font-family: 'Grand Hotel', cursive;
-  color: #262626;
+  color: #f2f2f2;
 }
 
 .login-user-container form input[type='submit'],
 .login-user-container form input[type='button'],
 .register-user-container form input[type='submit'] {
-  background-color: #3897f0;
+  background-color: rgb(190,0,131);
   outline: none;
   height: 38px;
   width: 80%;
   padding: 3%;
   border: none;
-  border: 1px solid #3897f0;
+  border: 1px solid rgb(190,0,131);
   border-radius: 3px;
   box-sizing: border-box;
   flex-direction: row;
   position: relative;
-  color: white;
+  color: #f2f2f2;
   font-size: 14px;
   margin-top: 6%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .login-user-container form input[type='button'] {
-  background-color: #fff;
-  color: #3897f0;
+  background-color: #34373c;
+  /* color: rgb(190,0,131); */
+  color: #f2f2f2;
   margin-top: 3%;
+  border: 1px solid #f2f2f2;
 }
 
 .login-user-container form input[type='text'],
@@ -57,20 +77,22 @@
 .register-user-container form input[type='text'],
 .register-user-container form input[type='email'],
 .register-user-container form input[type='password'] {
-  background-color: rgb(250, 250, 250);
+  background-color: #141518;
   outline: none;
   height: 38px;
   width: 80%;
   padding: 3%;
   border: none;
-  border: 1px solid #efefef;
+  border: 1px solid rgba(20, 21, 24, 0.2);
   border-radius: 3px;
   box-sizing: border-box;
   flex-direction: row;
   position: relative;
-  color: #262626;
+  color: rgb(190,0,131);
   font-size: 14px;
   margin-bottom: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
 
 .login-user-container form input[type='text']::placeholder,
@@ -78,7 +100,7 @@
 .register-user-container form input[type='text']::placeholder,
 .register-user-container form input[type='email']::placeholder,
 .register-user-container form input[type='password']::placeholder {
-  color: rgb(200, 200, 200);
+  color: rgba(242, 242, 242, 0.2);
 }
 
 .login-user-container form input[type='text']:focus,
@@ -86,30 +108,41 @@
 .register-user-container form input[type='text']:focus,
 .register-user-container form input[type='email']:focus,
 .register-user-container form input[type='password']:focus {
-  outline: 1px solid #b8b8b8;
+  outline: 1px solid #141518;
+  color: rgb(190,0,131);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.login-user-container form input[type='text']:focus::placeholder,
+.login-user-container form input[type='password']:focus::placeholder,
+.register-user-container form input[type='text']:focus::placeholder,
+.register-user-container form input[type='email']:focus::placeholder,
+.register-user-container form input[type='password']:focus::placeholder {
+  color: rgba(242, 242, 242, 0.4);
 }
 
 .login-message,
 .register-message {
   font-size: 12px;
-  color: #262626;
+  color: #f2f2f2;
   text-align: center;
 }
 
 .smaller-box {
   text-align: center;
   width: 300px;
-  background-color: #fff;
-  border: 1px solid #e6e6e6;
+  background-color: #34373c;
+  border: 1px solid rgba(242, 242, 242, 0.2);
   top: 10px;
   margin: 0 auto;
   position: relative;
   font-size: 14px;
-  color: #262626;
+  color: rgb(242, 242, 242);
 }
 
 .login-user-container a,
 .register-user-container a {
   text-decoration: none;
-  color: #3897f0;
+  color: rgb(190,0,131);
 }

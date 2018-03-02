@@ -1,10 +1,23 @@
 /*--------------------------------------------*/
+/*                Color Scheme                */
+/*--------------------------------------------*/
+/* color1: #34373c grey */
+/* color2: #141518 darkgrey */
+/* color3: #ab47bc purple NOPE */
+/*         #8e44ad purple YES? */
+/*         #7d3c98 purple TOO DARK */
+/*         #9933cc purple YES? BRIGHT */
+/* color4: #f2f2f2 whitesmoke */
+/* color5: #f2f2f2 low opacity */
+
+
+/*--------------------------------------------*/
 /*               App.js Top Bar               */
 /*--------------------------------------------*/
 
 .topbar {
-  background-color: #ffff;
-  border-bottom: 1px solid rgba(0,0,0,.0975);
+  background-color: #34373c;
+  border-bottom: 1px solid rgba(0,0,0,.0975); /* ??? */
   top: 0;
   width: 100%;
   z-index: 1;
@@ -16,7 +29,7 @@
 }
 
 .topbar a {
-  color: rgb(0, 0, 0);
+  color: #f2f2f2;
   text-decoration: none;
 }
 
@@ -48,9 +61,9 @@
   width: 30%;
 }
 
-.fontColor{
+/* .fontColor{
   color: #003569;
-}
+} */
 
 .userPhotos {
   height: 293px;
@@ -72,19 +85,26 @@
 .searchBar {
   padding: 3%;
   text-align: center;
-  background-color: rgb(250,250,250);
+  background-color: #141518;
   border: none;
-  border: 1px solid rgb(221, 221, 221);
+  border: 1px solid rgba(20, 21, 24, 0.2);
   border-radius: 0.5%;
   transition: 0.3s all;
   font-size: 1.4em;
+  color: rgba(242, 242, 242, 0.2);
 }
 
 .searchBar::placeholder {
-  color: rgb(221, 221, 221);
+  color: rgba(242, 242, 242, 0.2);
 }
 
 .searchBar:focus {
   outline: none;
-  background-color: rgb(255, 255, 255);
+  background-color: #34373c;
+  color: rgba(242, 242, 242, 0.6);
+  border: 1px solid #141518;
+}
+
+.searchBar:focus::placeholder {
+  color: rgba(242, 242, 242, 0.6);
 }
