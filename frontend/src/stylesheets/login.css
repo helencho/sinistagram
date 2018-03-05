@@ -3,10 +3,8 @@
 /*--------------------------------------------*/
 /* color1: #34373c grey */
 /* color2: #141518 darkgrey */
-/* color3: #ab47bc purple NOPE */
-/*         #8e44ad purple YES? */
-/*         #7d3c98 purple TOO DARK */
-/*         #9933cc purple YES? BRIGHT */
+/* color3: #8e44ad purple */
+/*         #9933cc purple bright */
 /*         rgb(190,0,131) purple pink */ 
 /*         rgb(148,0,105) purple --- CURRENT COLOR --- */
 /*         rgb(84,41,125) purple twitch */
@@ -19,7 +17,6 @@
 /*--------------------------------------------*/
 .login-user-container,
 .register-user-container {
-  /* background-color: salmon; */
   margin-top: 100px;
 }
 
@@ -30,7 +27,7 @@
   height: 45%;
   position: relative;
   background-color: #34373c;
-  border: 1px solid rgba(242, 242, 242, 0.2);
+  border: 1px solid rgba(242, 242, 242, 0.1);
   border-radius: 1px;
   margin: 0 auto;
   padding: 10px 0;
@@ -66,7 +63,6 @@
 
 .login-user-container form input[type='button'] {
   background-color: #34373c;
-  /* color: rgb(190,0,131); */
   color: #f2f2f2;
   margin-top: 3%;
   border: 1px solid #f2f2f2;
@@ -133,7 +129,8 @@
   text-align: center;
   width: 300px;
   background-color: #34373c;
-  border: 1px solid rgba(242, 242, 242, 0.2);
+  border: 1px solid rgba(242, 242, 242, 0.1);
+  border-radius: 1px;
   top: 10px;
   margin: 0 auto;
   position: relative;

@@ -3,13 +3,11 @@
 /*--------------------------------------------*/
 
 .homefeed-page-container {
-    background-color: rgb(250,250,250);
+    background-color: #141518;
     font-size: 10px;
-    color: rgb(55, 55, 55);
+    color: #f2f2f2;
     padding-bottom: 3%;
-    /* margin-top: 3%; */
 }
-
 
 .homefeed-page-container p {
     padding: 0;
@@ -17,17 +15,18 @@
 }
 
 .homefeed-card-container {
-    background-color: rgb(255, 255, 255);
-    width: 59%;
+    background-color: #34373c;
+    width: 40%;
     margin: 5% auto;
     transition: 0.5s all;
     text-align: left;
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 0.5%;
+    border: 1px solid rgba(242, 242, 242, 0.1);
+    border-radius: 1px;
 }
 
 .homefeed-card-meta {
     /* background-color: rgb(255, 255, 255); */
+    background-color: none;
     display: flex;
     padding: 2%;
     align-items: center;
@@ -46,12 +45,14 @@
 .homefeed-card-username a {
     text-decoration: none;
     font-size: 1.4em;
-    color: rgb(55, 55, 55);
+    color: #f2f2f2;
     font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
 .homefeed-card-img {
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
+    background-color: none;
 }
 
 .homefeed-card-img img {
@@ -104,6 +105,7 @@
 
 .homefeed-caption-username {
     font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
 /* .homefeed-card-caption {
@@ -112,7 +114,7 @@
 
 @media screen and (max-width: 940px) {
     .homefeed-card-container {
-        width: 80%;
+        width: 60%;
     }
 }
 
