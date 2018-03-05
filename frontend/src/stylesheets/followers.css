@@ -1,4 +1,14 @@
 /*--------------------------------------------*/
+/*                Color Scheme                */
+/*--------------------------------------------*/
+/* color1: #34373c grey */
+/* color2: #141518 darkgrey */
+/* color3: rgb(148,0,105) purple */
+/* color4: #f2f2f2 whitesmoke */
+/* color5: #f2f2f2 low opacity */
+
+
+/*--------------------------------------------*/
 /*           Followers and Following          */
 /*--------------------------------------------*/
 
@@ -7,18 +17,21 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    /* border: 1.3px solid rgb(230, 230, 230); */
     margin: 0 auto;
     padding: none;
     font-size: 1.4em;
-    color: rgb(55, 55, 55);
-    background-color: white;
+    color: #f2f2f2;
+    background-color: #34373c;
 }
 
 .follow-container a,
 .follow-container a:visited {
     text-decoration: none;
-    color: #262626;
+    color: #f2f2f2;
+}
+
+.follow-container button {
+    color: #f2f2f2;
 }
 
 .follow-container-nav {
@@ -26,7 +39,7 @@
     justify-content: space-between;
     padding: 0.6rem 1.2rem;
     font-family: 'Roboto', sans-serif;
-    border-bottom: 1px solid rgb(204, 204, 204);
+    border-bottom: 1px solid rgba(242, 242, 242, 0.6);
 }
 
 .follow-container-nav h1 {
@@ -45,17 +58,16 @@
 }
 
 .follow-list-container {
-    background-color: white;
+    background-color: #34373c;
     display: flex;
     flex-direction: column;
 }
 
 .follow-list-single-user {
     display: flex;
-    background-color: rgba(255, 255, 255, 0.3);
-    /* height: 50px; */
+    background-color: #34373c;
     padding: 0.6rem 1.2rem;
-    border-bottom: 2px solid rgba(204, 204, 204, 0.3)
+    border-bottom: 2px solid rgba(242, 242, 242, 0.1);
 }
 
 .follow-list-single-img {
@@ -83,5 +95,5 @@
 }
 
 .follow-list-single-info-name {
-    color: rgb(153, 153, 153);
+    color: rgba(242, 242, 242, 0.6);
 }
