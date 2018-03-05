@@ -95,17 +95,17 @@
 }
 
 .homefeed-card-liked-button {
-    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background: url('https://i.imgur.com/x4Wo9q1.png') no-repeat;
     background-size: 30px 30px;
 }
 
 .homefeed-card-unliked-button {
-    background: url('https://i.imgur.com/ACdwplH.png') no-repeat;
+    background: url('https://i.imgur.com/52U8P2X.png') no-repeat;
     background-size: 30px 30px;
 }
 
 .homefeed-card-unliked-button:hover {
-    background: url('https://i.imgur.com/1g3gy6g.png') no-repeat;
+    background: url('https://i.imgur.com/x4Wo9q1.png') no-repeat;
     background-size: 30px 30px;
 }
 
