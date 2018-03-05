@@ -1,17 +1,30 @@
 /*--------------------------------------------*/
+/*                Color Scheme                */
+/*--------------------------------------------*/
+/* color1: #34373c grey */
+/* color2: #141518 darkgrey */
+/* color3: rgb(148,0,105) purple */
+/* color4: #f2f2f2 whitesmoke */
+/* color5: #f2f2f2 low opacity */
+
+
+/*--------------------------------------------*/
 /*              SinglePhoto.jsx               */
 /*--------------------------------------------*/
 
 .single-photo-container {
     display: flex;
-    width: 932px;
-    height: 600px;
-    border: 1.3px solid rgb(230, 230, 230);
-    border-radius: 5px;
+    /* width: 932px; */
+    /* height: 600px; */
+    position: relative;
+    /* border: 1.3px solid rgb(230, 230, 230); */
+    /* border-radius: 5px; */
     margin: 0 auto;
-    margin-top: 3%;
+    /* margin-top: 3%; */
     font-size: 1.4em;
-    color: rgb(55, 55, 55);
+    /* color: rgb(55, 55, 55); */
+    color: #f2f2f2;
+    background-color: #34373c;
 }
 
 .single-photo {
@@ -26,7 +39,7 @@
 
 .single-photo-details {
     width: 335px;
-    background-color: white;
+    background-color: #34373c;
     padding: 3%;
     text-align: left;
 }
@@ -37,7 +50,7 @@
 }
 
 .single-photo-author {
-    border-bottom: 1px solid rgb(230, 230, 230);
+    border-bottom: 1px solid rgba(242, 242, 242, 0.6);
     padding-bottom: 6%;
     display: flex;
     align-items: center;
@@ -57,13 +70,13 @@
 }
 
 .single-photo-liked-status {
-    border-top: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid rgba(242, 242, 242, 0.6);
     padding-top: 6%;
 }
 
 .single-photo-likes {
     padding: 6% 0;
-    border-bottom: 1px solid rgb(230, 230, 230);
+    border-bottom: 1px solid rgba(242, 242, 242, 0.6);
 }
 
 form {
@@ -73,18 +86,19 @@ form {
 input[type='text'] {
     border: none;
     font-size: 1.2em;
-    color: rgb(55, 55, 55);
+    color: #f2f2f2;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
 }
 
 input[type='text']::placeholder {
     /* font-size: 1.2em; */
-    color: rgb(140, 140, 140);
+    color: rgba(242, 242, 242, 0.6);
 }
 
 input[type='text']:focus {
     outline: none;
 }
-
 
 @media screen and (max-width: 1000px) {
     .single-photo-container {

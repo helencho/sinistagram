@@ -86,6 +86,11 @@ class SinglePhoto extends Component {
     //     // Will also send an ajax request (post request) to a route that doesn't exist yet 
     // }
 
+    handleCommentSubmit = e => {
+        e.preventDefault() 
+        console.log('comment submitted') 
+    }
+
 
     render() {
         const { authorId, authorName, authorUsername, authorImgUrl, following, photoUrl, photoCaption, likedByUsers, liked } = this.state
@@ -96,18 +101,22 @@ class SinglePhoto extends Component {
 
         return (
             <div className='single-photo-container'>
-                <button name='showPhoto' onClick={this.props.handleModal}>EXIT</button>
                 <div className='single-photo'>
                     <img className='single-photo-img' src={photoUrl} alt='image' />
                 </div>
                 <div className='single-photo-details'>
                     <div className='single-photo-author'>
-                        <img className='prof-img-small' src={authorImgUrl} /> <span className='author-name'>{authorUsername}</span> • {following ? 'Following' : 'Follow'}
+                        <img className='prof-img-small' src={authorImgUrl} />
+                        <p className='author-name'>{authorUsername}</p>
+                        <p> • {following ? 'Following' : 'Follow'}</p>
+                        <button name='showPhoto' onClick={this.props.handleModal}>X</button>
                     </div>
                     <div className='single-photo-caption'><span className='author-name'>{authorUsername}</span> {photoCaption}</div>
                     <div className='single-photo-liked-status'>{likedStatus}</div>
                     <div className='single-photo-likes'>{totalLikes} likes</div>
-                    <form><input type='text' placeholder='Add a comment...' /></form>
+                    <form onSubmit={this.handleCommentSubmit}>
+                        <input type='text' placeholder='Add a comment...' />
+                    </form>
                 </div>
             </div>
         )
