@@ -52,10 +52,10 @@ class App extends Component {
     return (
       <div>
         <div className='App'>
-          <div className='topbar instaCloneFont'>
+          <div className='topbar'>
             <div className='topbar-left'>
               <Link to='/users/home'><i className='fab fa-instagram fa-2x' /></Link>
-              <span className='topbar-sitename'><Link to='/users/home'>Sinistagram</Link></span>
+              <span className='topbar-sitename instaCloneFont'><Link to='/users/home'>Sinistagram</Link></span>
             </div> {/* End topbar-left */}
 
             <div className='topbar-middle'>

@@ -3,10 +3,7 @@
 /*--------------------------------------------*/
 /* color1: #34373c grey */
 /* color2: #141518 darkgrey */
-/* color3: #ab47bc purple NOPE */
-/*         #8e44ad purple YES? */
-/*         #7d3c98 purple TOO DARK */
-/*         #9933cc purple YES? BRIGHT */
+/* color3: rgb(148,0,105) purple */
 /* color4: #f2f2f2 whitesmoke */
 /* color5: #f2f2f2 low opacity */
 
@@ -17,7 +14,7 @@
 
 .topbar {
   background-color: #34373c;
-  border-bottom: 1px solid rgba(0,0,0,.0975); /* ??? */
+  border-bottom: 1px solid rgba(0, 0, 0, .0975); 
   top: 0;
   width: 100%;
   z-index: 1;
@@ -38,7 +35,6 @@
 }
 
 .topbar-left {
-  /* background-color: salmon; */
   width: 30%;
 }
 
@@ -47,7 +43,6 @@
 }
 
 .topbar-middle {
-  /* background-color: goldenrod; */
   width: 30%;
 }
 
@@ -57,13 +52,8 @@
 }
 
 .topbar-right {
-  /* background-color: yellowgreen; */
   width: 30%;
 }
-
-/* .fontColor{
-  color: #003569;
-} */
 
 .userPhotos {
   height: 293px;
@@ -83,12 +73,12 @@
 }
 
 .searchBar {
-  padding: 3%;
+  padding: 10px;
   text-align: center;
   background-color: #141518;
   border: none;
-  border: 1px solid rgba(20, 21, 24, 0.2);
-  border-radius: 0.5%;
+  border: 1px solid rgba(20, 21, 24, 0.1);
+  border-radius: 1px;
   transition: 0.3s all;
   font-size: 1.4em;
   color: rgba(242, 242, 242, 0.2);
@@ -102,9 +92,40 @@
   outline: none;
   background-color: #34373c;
   color: rgba(242, 242, 242, 0.6);
-  border: 1px solid #141518;
+  border: 1px solid rgba(20, 21, 24, 0.8);
 }
 
 .searchBar:focus::placeholder {
   color: rgba(242, 242, 242, 0.6);
+}
+
+@media screen and (max-width: 490px) {
+  .searchBar {
+    padding: 6%;
+  }
+
+  .topbar {
+    justify-content: space-around;
+  }
+  
+  .topbar .instaCloneFont,
+  .topbar-middle {
+    display: none;
+  }
+
+  .topbar-left,
+  .topbar-right {
+    width: 45%;
+  }
+
+  .topbar-left {
+    text-align: left;
+    padding-left: 6%;
+  }
+
+  .topbar-right {
+    text-align: right;
+    padding-right: 6%;
+  }
+
 }
