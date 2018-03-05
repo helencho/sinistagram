@@ -87,8 +87,8 @@ class SinglePhoto extends Component {
     // }
 
     handleCommentSubmit = e => {
-        e.preventDefault() 
-        console.log('comment submitted') 
+        e.preventDefault()
+        console.log('comment submitted')
     }
 
 
@@ -100,25 +100,50 @@ class SinglePhoto extends Component {
         // console.log(this.props.photoid)
 
         return (
-            <div className='single-photo-container'>
-                <div className='single-photo'>
-                    <img className='single-photo-img' src={photoUrl} alt='image' />
+            <div className='single-photo-container'> {/* row */}
+                <div className='single-photo-left'>
+                    <div className='single-photo'>
+                        <img src={photoUrl} alt='photo' />
+                    </div>
                 </div>
-                <div className='single-photo-details'>
-                    <div className='single-photo-author'>
-                        <img className='prof-img-small' src={authorImgUrl} />
-                        <p className='author-name'>{authorUsername}</p>
-                        <p> • {following ? 'Following' : 'Follow'}</p>
+                <div className='single-photo-right'> {/* column */}
+                    <div className='single-photo-info'> {/* row */}
+                        <img src={authorImgUrl} alt={authorUsername} />
+                        <p>{authorUsername}</p>
                         <button name='showPhoto' onClick={this.props.handleModal}>X</button>
                     </div>
-                    <div className='single-photo-caption'><span className='author-name'>{authorUsername}</span> {photoCaption}</div>
-                    <div className='single-photo-liked-status'>{likedStatus}</div>
-                    <div className='single-photo-likes'>{totalLikes} likes</div>
-                    <form onSubmit={this.handleCommentSubmit}>
+                    <div className='single-photo-comments'> {/* column */}
+                        <p><span className='author-name'>{authorUsername}</span> {photoCaption}</p>
+                        <p><span className='author-name'>test</span> I love it!</p>
+                    </div>
+                    <div className='single-photo-likes'> {/* column */}
+                        <p>{likedStatus}</p>
+                        <p>{totalLikes} likes</p>
+                    </div>
+                    <form className='single-photo-add-comment'>
                         <input type='text' placeholder='Add a comment...' />
                     </form>
                 </div>
             </div>
+            // <div className='single-photo-container'>
+            //     <div className='single-photo'>
+            //         <img className='single-photo-img' src={photoUrl} alt='image' />
+            //     </div>
+            //     <div className='single-photo-details'>
+            //         <div className='single-photo-author'>
+            //             <img className='prof-img-small' src={authorImgUrl} />
+            //             <p className='author-name'>{authorUsername}</p>
+            //             <p> • {following ? 'Following' : 'Follow'}</p>
+            //             <button name='showPhoto' onClick={this.props.handleModal}>X</button>
+            //         </div>
+            //         <div className='single-photo-caption'><span className='author-name'>{authorUsername}</span> {photoCaption}</div>
+            //         <div className='single-photo-liked-status'>{likedStatus}</div>
+            //         <div className='single-photo-likes'>{totalLikes} likes</div>
+            //         <form onSubmit={this.handleCommentSubmit}>
+            //             <input type='text' placeholder='Add a comment...' />
+            //         </form>
+            //     </div>
+            // </div>
         )
     }
 }

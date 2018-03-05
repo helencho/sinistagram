@@ -45,20 +45,6 @@ body {
   transition: .5s all;
 }
 
-@media screen and (max-width: 1050px) {
-  .modal {
-    left: 12%;
-    right: 12%;
-  }
-}
-
-@media screen and (max-width: 690px) {
-  .modal {
-    left: 6%;
-    right: 6%;
-  }
-}
-
 
 /*--------------------------------------------*/
 /*             Single Photo Modal             */
@@ -78,4 +64,26 @@ body {
   padding: 0;
   margin-top: 46px;
   transition: .5s all;
+}
+
+
+@media screen and (max-width: 1180px) {
+  .modal-photo {
+    left: 12%;
+    right: 12%;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .modal {
+    left: 12%;
+    right: 12%;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .modal {
+    left: 6%;
+    right: 6%;
+  }
 }
