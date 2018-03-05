@@ -1,6 +1,6 @@
 # Sinistagram 
 
-A fullstack app for sharing your darkest, most sinister photos with family and friends. It's your favorite photo-sharing platform in the underworld, inspired by [Instagram](https://www.instagram.com/). Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
+A fullstack app for sharing your darkest, most evil photos with family and friends. It's the most sinister photo-sharing platform in the underworld, inspired by [Instagram](https://www.instagram.com/). Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
 
 
 ![homescreen](./public/home.png)
