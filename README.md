@@ -1,6 +1,6 @@
-# Parallelogram 
+# Sinistagram 
 
-A fullstack app for sharing photos with family and friends. It's your favorite photo-sharing platform in the universe, inspired by [Instagram](https://www.instagram.com/) from our sister universe. Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
+A fullstack app for sharing your darkest, most sinister photos with family and friends. It's your favorite photo-sharing platform in the underworld, inspired by [Instagram](https://www.instagram.com/). Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
 
 
 ## Features 
@@ -32,20 +32,14 @@ Curate the picture-perfect life.
 
 ## Getting Started
 
-Follow these instructions to get a copy of the fullstack app running on local for development and testing purposes.
+Follow these instructions to get a copy of the fullstack app running on local.
 
 
-### Prerequisities
-
-Clone the repo. Go into terminal and navigate to the root folder. Initialize npm:
-
-```
-npm init
-```
 
 ### Installing Backend
 
 ```
+git clone
 cd backend
 npm install
 npm start
@@ -59,6 +53,7 @@ The backend will be running on http://localhost:3001.
 Open a new terminal window.
 
 ```
+git clone
 cd frontend 
 npm install
 npm start 
@@ -91,4 +86,4 @@ Open http://localhost:3000/users to view the app in a browser.
 * Logout 
 * Search bar functionality 
 * ~~Modals for edit, followers, following~~
-* Switch profile to profile on username click 
+* Render user's profile on username click from followers/following list 
