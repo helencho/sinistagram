@@ -69,8 +69,8 @@ body {
 
 @media screen and (max-width: 1180px) {
   .modal-photo {
-    left: 12%;
-    right: 12%;
+    left: 10%;
+    right: 10%;
   }
 }
 
