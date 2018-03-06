@@ -17,6 +17,7 @@
     height: 100%;
     background-color: #34373c;
     color: #f2f2f2;
+    font-size: 1.4em;
 }
 
 .single-photo-left {
@@ -42,6 +43,7 @@
     display: flex;
     flex-direction: column;
     width: 35%;
+    padding: 3%;
 }
 
 .single-photo-info {
@@ -56,11 +58,19 @@
     border-radius: 100%;
 }
 
+.single-photo-info p {
+    font-weight: 600;
+}
+
 .single-photo-comments {
     display: flex;
     flex-direction: column;
     height: 50%;
     background-color: orange;
+}
+
+.single-photo-comments .author-name {
+    font-weight: 600;
 }
 
 .single-photo-likes {

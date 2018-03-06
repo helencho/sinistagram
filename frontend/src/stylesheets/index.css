@@ -52,32 +52,47 @@ body {
 
 .modal-photo {
   position: absolute;
-  top: 50px;
-  left: 16%;
-  right: 16%;
-  bottom: 50px;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px;
+  width: 815px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 46px;
   border: 1px solid rgb(204, 204, 204);
-  background: white;
+  background-color: rgba(255, 255, 255, 0.5);
   overflow: auto;
-  border-radius: 4px;
+  border-radius: 1px;
   outline: none;
   padding: 0;
-  margin-top: 46px;
   transition: .5s all;
+  -moz-transition: .5s all;
+  -webkit-transition: .5s all;
+  -o-transition: .5s all;
 }
 
 
-@media screen and (max-width: 1180px) {
+/* @media screen and (max-width: 1180px) {
   .modal-photo {
     left: 10%;
     right: 10%;
+    width: auto;
   }
-}
+} */
 
 @media screen and (max-width: 1050px) {
   .modal {
     left: 12%;
     right: 12%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .modal-photo {
+    left: 10%;
+    right: 10%;
+    width: auto;
   }
 }
 
