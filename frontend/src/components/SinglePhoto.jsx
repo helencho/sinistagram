@@ -120,30 +120,11 @@ class SinglePhoto extends Component {
                         <p>{likedStatus}</p>
                         <p>{totalLikes} likes</p>
                     </div>
-                    <form className='single-photo-add-comment'>
+                    <form className='single-photo-add-comment' onSubmit={this.handleCommentSubmit}>
                         <input type='text' placeholder='Add a comment...' />
                     </form>
                 </div>
             </div>
-            // <div className='single-photo-container'>
-            //     <div className='single-photo'>
-            //         <img className='single-photo-img' src={photoUrl} alt='image' />
-            //     </div>
-            //     <div className='single-photo-details'>
-            //         <div className='single-photo-author'>
-            //             <img className='prof-img-small' src={authorImgUrl} />
-            //             <p className='author-name'>{authorUsername}</p>
-            //             <p> • {following ? 'Following' : 'Follow'}</p>
-            //             <button name='showPhoto' onClick={this.props.handleModal}>X</button>
-            //         </div>
-            //         <div className='single-photo-caption'><span className='author-name'>{authorUsername}</span> {photoCaption}</div>
-            //         <div className='single-photo-liked-status'>{likedStatus}</div>
-            //         <div className='single-photo-likes'>{totalLikes} likes</div>
-            //         <form onSubmit={this.handleCommentSubmit}>
-            //             <input type='text' placeholder='Add a comment...' />
-            //         </form>
-            //     </div>
-            // </div>
         )
     }
 }
