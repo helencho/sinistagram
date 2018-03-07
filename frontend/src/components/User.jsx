@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import axios from 'axios'
 import Profile from './Profile'
-import Followers from './Followers'
-import Followees from './Followees'
-import SinglePhoto from './SinglePhoto'
-import EditUser from './EditUser'
+// import Followers from './Followers'
+// import Followees from './Followees'
+// import SinglePhoto from './SinglePhoto'
+// import EditUser from './EditUser'
 import UploadPhoto from './UploadPhoto'
-import ReactModal from 'react-modal'
+import Explore from './Explore'
 
 class User extends Component {
     constructor(props) {
@@ -133,7 +133,7 @@ class User extends Component {
 
     renderExplore = () => {
         return (
-            <h1>Explore all users</h1>
+            <Explore />
         )
     }
 

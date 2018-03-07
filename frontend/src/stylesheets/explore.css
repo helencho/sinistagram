@@ -1,0 +1,114 @@
+/*--------------------------------------------*/
+/*                Color Scheme                */
+/*--------------------------------------------*/
+/* color1: #34373c grey */
+/* color2: #141518 darkgrey */
+/* color3: rgb(148,0,105) purple */
+/* color4: #f2f2f2 whitesmoke */
+/* color5: #f2f2f2 low opacity */
+
+
+/*--------------------------------------------*/
+/*                Explore Users               */
+/*--------------------------------------------*/
+
+.explore-container {
+    color: #f2f2f2;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.explore-container h1 {
+    font-size: 14px;
+    color: rgba(242, 242, 242, 0.8);
+}
+
+.explore-tile-container {
+    width: 935px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -o-transition: 0.3s all;
+}
+
+.explore-single {
+    width: 259px;
+    height: 218px;
+    padding: 0 20px;
+    margin: 1% 0;
+    background-color: #34373c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(242, 242, 242, 0.1);
+    border-radius: 1px;
+    transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -o-transition: 0.3s all;
+}
+
+.explore-single-img-container {
+    height: 78px;
+    width: 78px;
+    border-radius: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explore-single img {
+    height: 78px;
+    width: auto;
+}
+
+.explore-single-info-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 6%;
+    width: 100%;
+}
+
+.explore-single-info-container p {
+    margin: 0;
+    padding: 2%;
+}
+
+.explore-single-info-container a,
+.explore-single-info-container a:visited {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.explore-single-info-container p:last-child {
+    color: rgba(242, 242, 242, 0.5);
+}
+
+@media screen and (max-width: 992px) {
+    .explore-tile-container {
+        width: 96%;
+    }
+
+    .explore-single {
+        width: 26%;
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .explore-tile-container {
+        justify-content: center;
+    }
+
+    .explore-single {
+        width: 66%;
+    }
+}
