@@ -3,24 +3,24 @@
 A fullstack app for sharing your darkest, most evil photos with family and friends. It's the most sinister photo-sharing platform in the underworld, inspired by [Instagram](https://www.instagram.com/). Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
 
 
-![homescreen](./public/home.png)
+![homescreen](./assets/home.png)
 
 
 ## Features 
 
 Log in and register securely using Bcrypt for authentication and verification of credentials. 
 
-![ursula login](./public/login-ursula.gif)
+![ursula login](./assets/login-ursula.gif)
 
 
 Look through your followers' photos in your homefeed. Click on a heart to like a photo. 
 
-![homefeed](./public/home.gif)
+![homefeed](./assets/home.gif)
 
 
 Curate the picture-perfect life. 
 
-![user gallery](./public/gallery.gif)
+![user gallery](./assets/gallery.gif)
 
 
 ## Getting Started

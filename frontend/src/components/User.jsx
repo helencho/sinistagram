@@ -23,12 +23,41 @@ class User extends Component {
     }
 
     componentDidMount() {
-        this.getUserInfo()
+        this.getUserInfo() 
     }
+
+
+    // This is one behind? 
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('--------')
+    //     console.log('next ' + nextProps.match.params.id) 
+    //     console.log('current ' + this.props.match.params.id)
+    //     return nextProps.match.params.id != this.props.match.params.id 
+    // }
+
+
+    // I don't know what this does? this !== next ? RERENDER!
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.match.params.id != this.props.match.params.id) {
+    //         this.getUserInfo() 
+    //     }
+    // }
+
+
+    // Will always rerender
+    componentWillReceiveProps() {
+        this.getUserInfo() 
+    }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return this.state !== nextState;
+    // }
 
     // Grab logged in user's information 
     getUserInfo = () => {
         const id = this.props.match.params.id
+        // const id = this.props.targetID
+
         axios
             .get(`/users/u/${id}`)
             .then(res => {
@@ -187,6 +216,7 @@ class User extends Component {
 
     render() {
         console.log(this.state)
+        console.log('id? ' + this.props.targetID)
 
         return (
             <div>

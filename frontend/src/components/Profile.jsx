@@ -8,6 +8,10 @@ class Profile extends React.Component {
         super(props)
     }
 
+    componentWillReceiveProps() {
+        console.log('profile receiving props')
+    }
+
     render() {
         console.log(this.props)
         return (

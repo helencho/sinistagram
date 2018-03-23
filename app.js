@@ -4,6 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// var dotenv = require('dotenv').config();
+
+require('dotenv').config(); // module that load environment variables from a .env file 
+console.log(process.env.DATABASE_URL);
+
 const session = require('express-session');
 const passport = require('passport'); 
 
@@ -25,7 +30,8 @@ app.use(session({
 })); 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 // app.use('/', index);
 app.use('/users', users);

@@ -1,5 +1,6 @@
 const pgp = require('pg-promise')({})
-const db = pgp('postgres://localhost/instaclone')
+// const db = pgp('postgres://localhost/instaclone')
+const db = pgp(process.env.DATABASE_URL);
 const authHelpers = require('../auth/helpers')
 const passport = require('../auth/local')
 
