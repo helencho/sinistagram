@@ -1,6 +1,8 @@
 const passport = require('passport')
 const pgp = require('pg-promise')({})
-const db = pgp('postgres://localhost/instaclone') 
+// const db = pgp('postgres://localhost/instaclone') 
+require('dotenv').config(); 
+const db = pgp(process.env.DATABASE_URL);
 
 module.exports = () => {
     passport.serializeUser((user, done) => {

@@ -3,7 +3,10 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const init = require('./passport')
 const pgp = require('pg-promise')({})
-const db = pgp('postgres://localhost/instaclone') // Is this the name of the database? 
+// const db = pgp('postgres://localhost/instaclone') // Is this the name of the database? 
+require('dotenv').config(); 
+const db = pgp(process.env.DATABASE_URL);
+
 const authHelpers = require('./helpers')
 
 const options = {}
