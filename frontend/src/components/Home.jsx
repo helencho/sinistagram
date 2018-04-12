@@ -14,11 +14,11 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.mountLoggedInUser()
+        this.setActiveUser()
     }
 
     // Set loggedInAs as the current user logged in 
-    mountLoggedInUser = () => {
+    setActiveUser = () => {
         this.setState({
             loggedInAs: this.props.user
         }, () => {
@@ -218,7 +218,7 @@ class Home extends Component {
                         </div>
                     ))
                     :
-                    <h1>...</h1>
+                    <h1>Loading...</h1>
                 }
 
             </div>

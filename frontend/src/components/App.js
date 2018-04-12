@@ -21,10 +21,11 @@ class App extends Component {
   // }
 
   componentDidMount() {
+    console.log('is it hitting this componentDidMount?')
     axios
       .get('/users/getUser')
       .then(res => {
-        console.log(res.data)
+        console.log(res.data.user)
         this.setState({
           user: res.data.user
         })
@@ -62,12 +63,12 @@ class App extends Component {
   // Home is the feed screen
   renderHome = () => {
     const { user } = this.state
-    return <Home user={user} />
-    // if (user) {
-    //   return <Home user={user} />
-    // } else {
-    //   return this.renderLogin()
-    // }
+    // return <Home user={user} />
+    if (user) {
+      return <Home user={user} />
+    } else {
+      return this.renderLogin()
+    }
   }
 
   render() {
@@ -79,8 +80,8 @@ class App extends Component {
         <div className='App'>
           <div className='topbar'>
             <div className='topbar-left'>
-              <Link to='/users/home'><i className='fab fa-instagram fa-2x' /></Link>
-              <span className='topbar-sitename instaCloneFont'><Link to='/users/home'>Sinistagram</Link></span>
+              <Link to='/home'><i className='fab fa-instagram fa-2x' /></Link>
+              <span className='topbar-sitename instaCloneFont'><Link to='/home'>Sinistagram</Link></span>
             </div> {/* End topbar-left */}
 
             <div className='topbar-middle'>
@@ -123,14 +124,12 @@ class App extends Component {
 
         <div>
           <Route exact path='/' render={this.renderLogin} />
-          {/* <Route exact path='/users' render={this.renderLogin} /> */}
-          <Route path='/users/login' render={this.renderLogin} />
-          <Route path='/users/new' render={this.renderNew} />
-          <Route path='/users/logout' render={this.renderLogout} />
-          <Route path='/users/home' render={this.renderHome} />
+          <Route path='/login' render={this.renderLogin} />
+          <Route path='/new' render={this.renderNew} />
+          <Route path='/logout' render={this.renderLogout} />
+          <Route path='/home' render={this.renderHome} />
           <Route path="/users/u/:id" render={(props) => <User loggedInAs={user} {...props} />} />
           {/* Passing params in render: https://stackoverflow.com/questions/45898789/react-router-pass-param-to-component */}
-          {/* <Route path='/users/u/:id' component={User} /> */}
         </div>
       </div>
     );

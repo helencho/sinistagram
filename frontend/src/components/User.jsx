@@ -215,8 +215,8 @@ class User extends Component {
     // }
 
     render() {
-        console.log(this.state)
-        console.log('id? ' + this.props.targetID)
+        // console.log(this.state)
+        // console.log('id? ' + this.props.targetID)
 
         return (
             <div>

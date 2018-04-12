@@ -174,7 +174,7 @@ class NewUserMain extends Component {
         </div> {/* End register-box */}
 
         <div className='smaller-box'>
-          <p>Have an account? <Link to='/users/login'>Login</Link></p>
+          <p>Have an account? <Link to='/login'>Login</Link></p>
         </div> {/* End smaller-box */}
       </div>
     );

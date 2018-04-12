@@ -101,7 +101,7 @@ class LoginUser extends Component {
         </div> {/* End login-box */}
 
         <div className='smaller-box'>
-          <p>Don't have an account?<Link to="/users/new"> Sign up</Link></p>
+          <p>Don't have an account?<Link to="/new"> Sign up</Link></p>
         </div> {/* End smaller-box */}
 
       </div>

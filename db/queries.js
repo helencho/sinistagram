@@ -28,7 +28,6 @@ function getSingleUser(req, res, next) {
         .one('SELECT * FROM users WHERE user_id = $1',
             [req.params.id])
         .then(data => {
-            // console.log("Data from backend single user:", data)
             res.status(200).json({
                 status: 'Success',
                 data: data,
@@ -36,7 +35,6 @@ function getSingleUser(req, res, next) {
             })
         })
         .catch(err => {
-            // console.log('  ERRORRRR', err)
             return next(err)
         })
 }
@@ -300,7 +298,7 @@ function uploadPhoto(req, res, next) {
 // Get authenticated user 
 // Route: /users/getUser
 function getUser(req, res, next) {
-    console.log(req.user.user_id)
+    // console.log(req.user)
     db
         .one(`SELECT * FROM users WHERE user_id = $1`,
             [req.user.user_id])
