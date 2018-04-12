@@ -300,9 +300,10 @@ function uploadPhoto(req, res, next) {
 // Get authenticated user 
 // Route: /users/getUser
 function getUser(req, res, next) {
+    console.log(req.user.user_id)
     db
         .one(`SELECT * FROM users WHERE user_id = $1`,
-            [req.user.id])
+            [req.user.user_id])
         .then(data => {
             res.status(200).json({
                 status: 'Success',

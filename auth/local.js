@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy
 const init = require('./passport')
 const pgp = require('pg-promise')({})
 // const db = pgp('postgres://localhost/instaclone') // Is this the name of the database? 
-require('dotenv').config(); 
+require('dotenv').config();
 const db = pgp(process.env.DATABASE_URL);
 
 const authHelpers = require('./helpers')
@@ -17,11 +17,12 @@ passport.use(
     new LocalStrategy(options, (username, password, done) => {
         console.log('Trying to authenticate...')
 
-        // Select user from users / userlist table 
-        db.any('SELECT * FROM users WHERE username=$1', [username])
-            .then((rows) => {
+        db
+            .any('SELECT * FROM users WHERE username = $1', [username])
+            .then(rows => {
                 const user = rows[0]
-                console.log('user: ' + user)
+
+                console.log(user)
                 if (!user) {
                     return done(null, false)
                 }

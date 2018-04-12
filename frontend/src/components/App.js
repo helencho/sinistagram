@@ -6,6 +6,7 @@ import LogOut from '../components/LogOut'
 import User from '../components/User'
 import Home from '../components/Home'
 import NewUserMain from '../components/NewUserMain'
+import axios from 'axios'
 
 class App extends Component {
   constructor() {
@@ -15,8 +16,31 @@ class App extends Component {
     }
   }
 
+  // setUser = user => {
+  //   this.setState({ user: user })
+  // }
+
+  componentDidMount() {
+    axios
+      .get('/users/getUser')
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          user: res.data.user
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   setUser = user => {
-    this.setState({ user: user })
+    if (!user) {
+      console.log('Error, user not found');
+    }
+    this.setState({
+      user: user
+    })
   }
 
   logOutUser = () => {
@@ -38,16 +62,17 @@ class App extends Component {
   // Home is the feed screen
   renderHome = () => {
     const { user } = this.state
-    if (user) {
-      return <Home user={user} />
-    } else {
-      return this.renderLogin()
-    }
+    return <Home user={user} />
+    // if (user) {
+    //   return <Home user={user} />
+    // } else {
+    //   return this.renderLogin()
+    // }
   }
 
   render() {
     const { user } = this.state
-    // console.log(this.state)
+    console.log(this.state)
 
     return (
       <div>
@@ -98,7 +123,7 @@ class App extends Component {
 
         <div>
           <Route exact path='/' render={this.renderLogin} />
-          <Route exact path='/users' render={this.renderLogin} />
+          {/* <Route exact path='/users' render={this.renderLogin} /> */}
           <Route path='/users/login' render={this.renderLogin} />
           <Route path='/users/new' render={this.renderNew} />
           <Route path='/users/logout' render={this.renderLogout} />

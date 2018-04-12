@@ -12,7 +12,7 @@ class LoginUser extends Component {
       usernameInput: '',
       passwordInput: '',
       message: 'Forgot password?',
-      loggedIn: false
+      // loggedIn: false
     }
   }
 
@@ -33,7 +33,7 @@ class LoginUser extends Component {
 
   submitForm = e => {
     e.preventDefault()
-    const { usernameInput, passwordInput, loggedIn } = this.state
+    const { usernameInput, passwordInput } = this.state
 
     if (usernameInput.length < 3) {
       this.setState({
@@ -46,12 +46,12 @@ class LoginUser extends Component {
           password: passwordInput
         })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           this.props.setUser(res.data)
           this.setState({
             usernameInput: '',
             passwordInput: '',
-            loggedIn: true
+            // loggedIn: true
           })
         })
         .catch(err => {
@@ -65,12 +65,12 @@ class LoginUser extends Component {
   }
 
   render() {
-    const { usernameInput, passwordInput, message, loggedIn } = this.state
-    console.log(this.state)
+    const { usernameInput, passwordInput, message } = this.state
+    // console.log(this.state)
 
-    if (loggedIn) {
-      return <Redirect to='/users/home' />
-    }
+    // if (loggedIn) {
+    //   return <Redirect to='/users/home' />
+    // }
 
     return (
       <div className='login-user-container'>

@@ -188,8 +188,8 @@ class Home extends Component {
     }
 
     render() {
-        const { loggedInAs, followees, photoFeed } = this.state
-        console.log(this.state)
+        const { followees, photoFeed } = this.state
+        console.log(this.state.loggedInAs)
 
         return (
             <div className='homefeed-page-container'>
