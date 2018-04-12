@@ -16,6 +16,7 @@ function createHash(password) {
 }
 
 function loginRequired(req, res, next) {
+    // console.log(req.user)
     if(!req.user) {
         return res.status(401).json({
             status: 'Please log in'

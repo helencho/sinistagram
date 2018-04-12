@@ -10,10 +10,10 @@ module.exports = () => {
     passport.deserializeUser((username, done) => {
         db
             .one('SELECT * FROM users WHERE username=$1', [username])
-            .then((user) => {
+            .then(user => {
                 done(null, user)
             })
-            .catch((err) => {
+            .catch(err => {
                 done(err, null)
             })
     })
