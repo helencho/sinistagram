@@ -1,17 +1,15 @@
-const pgp = require('pg-promise')({})
-// const db = pgp('postgres://localhost/instaclone')
-
-require('dotenv').config(); 
-const db = pgp(process.env.DATABASE_URL);
+const pgp = require('pg-promise')({});
 const authHelpers = require('../auth/helpers')
 const passport = require('../auth/local')
+require('dotenv').config();
+const db = pgp(process.env.DATABASE_URL);
 
-// Information on all users
+// Information on all users 
+// Route: /users/
 function getAllUsers(req, res, next) {
     db
         .any('SELECT * FROM users')
         .then((data) => {
-            // console.log("data:", data)
             res.status(200).json({
                 status: 'success',
                 data: data,
@@ -23,7 +21,8 @@ function getAllUsers(req, res, next) {
         })
 }
 
-// Get a user by user id
+// Get a user by user id 
+// Route: /users/u/:id 
 function getSingleUser(req, res, next) {
     db
         .one('SELECT * FROM users WHERE user_id = $1',
@@ -43,6 +42,7 @@ function getSingleUser(req, res, next) {
 }
 
 // Update a single user's username, email, full name, profile ic, and user description
+// Route: /users/u/:id/edit 
 function editUser(req, res, next) {
     db
         .none('UPDATE users SET username=$1, email=$2, fullname=$3, profile_url=$4, user_description=$5 WHERE user_id = $6',
@@ -297,8 +297,29 @@ function uploadPhoto(req, res, next) {
         })
 }
 
+// Get authenticated user 
+// Route: /users/getUser
+function getUser(req, res, next) {
+    db
+        .one(`SELECT * FROM users WHERE user_id = $1`,
+            [req.user.id])
+        .then(data => {
+            res.status(200).json({
+                status: 'Success',
+                data: data,
+                message: 'Retrieved user'
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 'Error',
+                error: err
+            })
+        })
+}
 
 // Registers user using email, username, password, fullname
+// Route: /users/new 
 function registerUser(req, res, next) {
     let hash = authHelpers.createHash(req.body.password)
     db
@@ -319,7 +340,7 @@ function registerUser(req, res, next) {
         })
 }
 
-
+// Route: /users/logout 
 function logoutUser(req, res, next) {
     req.logout()
     res.status(200).json({
@@ -345,6 +366,7 @@ module.exports = {
     favePhoto: favePhoto,
     unfavePhoto: unfavePhoto,
     uploadPhoto: uploadPhoto,
+    getUser: getUser,
     registerUser: registerUser,
     logoutUser: logoutUser
 }

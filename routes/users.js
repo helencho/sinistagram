@@ -6,6 +6,7 @@ const passport = require('../auth/local')
 
 // User information functions 
 router.get('/', db.getAllUsers)
+router.get('/getUser', loginRequired, db.getUser)
 router.get('/u/:id', db.getSingleUser)
 router.patch('/u/:id/edit', db.editUser)
 router.post('/u/:id/follow', db.followUser)
