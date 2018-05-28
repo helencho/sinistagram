@@ -2,7 +2,7 @@
 
 A fullstack app for sharing your darkest, most evil photos with family and friends. It's the most sinister photo-sharing platform in the underworld, inspired by [Instagram](https://www.instagram.com/). Original project code can be viewed [here](https://github.com/helencho/insta-clone).  
 
-![homescreen](./assets/profile-screely.png)
+![homescreen](./assets/profile-screely-2.png)
 
 ## Features 
 
